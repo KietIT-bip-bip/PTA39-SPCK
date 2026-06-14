@@ -25,6 +25,43 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#centralwidget {
+	background: #111844;
+}
+
+#username, #password {
+	background: #4BB8FA;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	min-height: 40px;
+}
+#login {
+	color:  #4BB8FA;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	min-height: 40px;
+}
+#login:hover {
+	color: #111844;
+	background: #4BB8FA;
+}
+#forgot_password, #nav_signup {
+	color: #C1EBE9;
+	background: transparent;
+	border: none;
+	outline: none;	
+	text-align: left; 
+}
+#label_2,#label_3 {
+	color: #4BB8FA;
+}
+#label_4 {
+	color: #4BB8FA;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
@@ -36,26 +73,50 @@
     </item>
     <item>
      <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>User Name</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="username"/>
     </item>
     <item>
      <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Password</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_2"/>
+     <widget class="QLineEdit" name="password"/>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="login">
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Login</string>
       </property>
@@ -66,13 +127,28 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <family>Arial Black</family>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Need an account?</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="nav_signup">
+         <property name="font">
+          <font>
+           <family>Arial Black</family>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Sigup here!</string>
          </property>
@@ -82,7 +158,14 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="forgot_password">
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>Forgot Password</string>
       </property>
