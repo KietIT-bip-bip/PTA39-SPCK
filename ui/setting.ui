@@ -34,6 +34,13 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>logo</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="Line" name="line">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -99,7 +106,7 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Logo</string>
+             <string>pos</string>
             </property>
            </widget>
           </item>
@@ -109,23 +116,6 @@
              <string notr="true">background-color: rgb(170, 255, 0);</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
-             <item>
-              <widget class="QLabel" name="label_2">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 170, 255);</string>
-               </property>
-               <property name="text">
-                <string>Logo</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="Line" name="line_3">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QLabel" name="label_3">
                <property name="styleSheet">
@@ -153,17 +143,25 @@
                </property>
               </widget>
              </item>
+             <item>
+              <widget class="Line" name="line_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="styleSheet">
+                <string notr="true">
+background-color: rgb(0, 170, 255);</string>
+               </property>
+               <property name="text">
+                <string>SDT</string>
+               </property>
+              </widget>
+             </item>
             </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_4">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(170, 255, 127);</string>
-            </property>
-            <property name="text">
-             <string>Thêm tài khoản</string>
-            </property>
            </widget>
           </item>
           <item>
@@ -190,6 +188,18 @@
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QWidget" name="widget_6" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 127);</string>
             </property>
@@ -200,7 +210,7 @@
                 <string notr="true">background-color: rgb(255, 170, 255);</string>
                </property>
                <property name="text">
-                <string>Đặt hình nền</string>
+                <string>Thay đổi tên</string>
                </property>
               </widget>
              </item>
@@ -223,7 +233,7 @@
                 <string notr="true">background-color: rgb(255, 170, 255);</string>
                </property>
                <property name="text">
-                <string>Chia sẻ với bạn bè</string>
+                <string>Thay đổi mật khẩu</string>
                </property>
               </widget>
              </item>
@@ -241,40 +251,17 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_9">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 170, 255);</string>
-               </property>
-               <property name="text">
-                <string>Đánh giá </string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_5">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
               <widget class="QPushButton" name="pushButton_8">
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(255, 170, 255);</string>
                </property>
                <property name="text">
-                <string>Chính sách và Điều khoản</string>
+                <string>Thay đổi SDT</string>
                </property>
               </widget>
              </item>
              <item>
-              <spacer name="verticalSpacer_6">
+              <spacer name="verticalSpacer_5">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -293,6 +280,29 @@
                </property>
                <property name="text">
                 <string>Hướng dẫn sử dụng</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_9">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 170, 255);</string>
+               </property>
+               <property name="text">
+                <string>Đánh giá </string>
                </property>
               </widget>
              </item>
@@ -319,44 +329,8 @@
                </property>
               </widget>
              </item>
-             <item>
-              <spacer name="verticalSpacer_8">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_6">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 85, 255);</string>
-               </property>
-               <property name="text">
-                <string>Phiên bản hiện tại: Beta</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
           <item>
            <widget class="QLabel" name="label_7">
@@ -366,6 +340,16 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 85, 255);</string>
+         </property>
+         <property name="text">
+          <string>Phiên bản hiện tại: Beta</string>
+         </property>
         </widget>
        </item>
       </layout>

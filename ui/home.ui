@@ -28,7 +28,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_28">
     <item>
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QWidget" name="thanhcongcu" native="true">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 170, 170);</string>
       </property>
@@ -48,21 +48,21 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="nut_hk1">
          <property name="text">
           <string>HK1</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="nut_hk2">
          <property name="text">
           <string>HK2</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="nut_canam">
          <property name="text">
           <string>Cả năm</string>
          </property>
@@ -292,6 +292,16 @@
                           </size>
                          </property>
                         </spacer>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_9">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(170, 170, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Học lực</string>
+                         </property>
+                        </widget>
                        </item>
                        <item>
                         <widget class="QLineEdit" name="lineEdit_85">
@@ -1339,6 +1349,16 @@
                         </spacer>
                        </item>
                        <item>
+                        <widget class="QLabel" name="label_33">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(170, 170, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Học lực</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
                         <widget class="QLineEdit" name="lineEdit_86">
                          <property name="text">
                           <string>TB HK2</string>
@@ -2382,6 +2402,16 @@
                           </size>
                          </property>
                         </spacer>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_34">
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(170, 170, 255);</string>
+                         </property>
+                         <property name="text">
+                          <string>Học lực</string>
+                         </property>
+                        </widget>
                        </item>
                        <item>
                         <widget class="QLineEdit" name="lineEdit_256">
