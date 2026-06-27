@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>758</width>
+    <height>56</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>758</width>
+    <height>56</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>758</width>
+    <height>56</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QWidget" name="widget_13" native="true">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="sub_name">
+        <property name="text">
+         <string>Toán</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="tx1">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #4A6FA5;</string>
+        </property>
+        <property name="text">
+         <string>TX1</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="tx2">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #4A6FA5;</string>
+        </property>
+        <property name="text">
+         <string>TX2</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="tx3">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #4A6FA5;</string>
+        </property>
+        <property name="text">
+         <string>TX3</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="tx4">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #4A6FA5;</string>
+        </property>
+        <property name="text">
+         <string>TX4</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="gk">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #4A6FA5;</string>
+        </property>
+        <property name="text">
+         <string>GK</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="ck">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #4A6FA5;</string>
+        </property>
+        <property name="text">
+         <string>CK</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="sub_tb">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #C0E0E0;</string>
+        </property>
+        <property name="text">
+         <string>Trung bình</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

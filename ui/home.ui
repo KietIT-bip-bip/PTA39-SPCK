@@ -173,42 +173,20 @@ background-color: rgb(85, 85, 101);
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
-<<<<<<< HEAD
-              <widget class="QLabel" name="lab_hoten">
-=======
-              <widget class="QLabel" name="label_2">
+              <widget class="QLabel" name="username">
                <property name="styleSheet">
                 <string notr="true">color: rgb(255, 255, 255);</string>
                </property>
->>>>>>> 0a4db9d11e5206df56dde0df4485b3da7f30a624
                <property name="text">
                 <string>Username:</string>
                </property>
               </widget>
              </item>
              <item>
-<<<<<<< HEAD
-              <widget class="QLabel" name="lab_lop">
-=======
-              <widget class="QLabel" name="label_5">
+              <widget class="QLabel" name="hoc_luc_allyear">
                <property name="styleSheet">
                 <string notr="true">color: rgb(255, 255, 255);</string>
                </property>
->>>>>>> 0a4db9d11e5206df56dde0df4485b3da7f30a624
-               <property name="text">
-                <string>Lớp:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-<<<<<<< HEAD
-              <widget class="QLabel" name="lab_hocluc">
-=======
-              <widget class="QLabel" name="label_4">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);</string>
-               </property>
->>>>>>> 0a4db9d11e5206df56dde0df4485b3da7f30a624
                <property name="text">
                 <string>Học Lực:</string>
                </property>
@@ -272,15 +250,9 @@ border-radius: 4px;</string>
              <property name="geometry">
               <rect>
                <x>0</x>
-<<<<<<< HEAD
-               <y>-2082</y>
-               <width>828</width>
-               <height>3018</height>
-=======
                <y>0</y>
-               <width>791</width>
-               <height>3022</height>
->>>>>>> 0a4db9d11e5206df56dde0df4485b3da7f30a624
+               <width>830</width>
+               <height>3018</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -323,7 +295,7 @@ color: rgb(255, 255, 255);</string>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_14">
                        <item>
-                        <widget class="QLabel" name="label_7">
+                        <widget class="QLabel" name="hk_num">
                          <property name="styleSheet">
                           <string notr="true"/>
                          </property>
@@ -398,7 +370,7 @@ color: rgb(255, 255, 255);</string>
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_9">
+                        <widget class="QLabel" name="hoc_luc">
                          <property name="styleSheet">
                           <string notr="true">border: 2px solid #4A6FA5;</string>
                          </property>
@@ -408,9 +380,23 @@ color: rgb(255, 255, 255);</string>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="lineEdit_85">
+                        <widget class="QLineEdit" name="tb_term">
                          <property name="text">
                           <string>TB HKI</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="cal_hk">
+                         <property name="font">
+                          <font>
+                           <pointsize>9</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Tính điểm TB</string>
                          </property>
                         </widget>
                        </item>

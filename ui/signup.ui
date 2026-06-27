@@ -32,51 +32,88 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1000</width>
+     <height>600</height>
+    </size>
+   </property>
    <property name="maximumSize">
     <size>
-     <width>16777215</width>
+     <width>1000</width>
      <height>600</height>
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">#centralwidget {
-	background: #FEEBE7;
+    <string notr="true">/* Nền xanh dương cực đậm huyền bí */
+#centralwidget {
+	background: #0A1128;
 }
 
-#title {
-	color: #F54927;
-}
-
-#email, #password, #full_name {
-	background: #FCC6BB;
-	border: none;
-	outline: none;
+/* Các ô nhập dữ liệu nền xanh đêm, chữ trắng */
+#full_name, #email, #password, #password_2 {
+	background: #131F42;
+	border: 1px solid #1D2E61;
 	border-radius: 10px;
 	min-height: 40px;
+	padding-left: 10px;
+	color: #FFFFFF;
+}
+#full_name:focus, #email:focus, #password:focus, #password_2:focus {
+	border: 1.5px solid #00B4D8; /* Lên viền xanh sáng của logo khi click chuột vào */
 }
 
+/* Các nhãn chữ đổi sang màu xanh sáng cho dễ đọc */
+QLabel {
+	color: #00B4D8;
+}
+
+/* Nút Register màu xanh Cyan nổi bần bật */
 #signup {
-	color: #F54927;
+	background: #00B4D8;
+	color: #0A1128;
+	font-weight: bold;
 	border: none;
 	outline: none;
 	border-radius: 10px;
 	min-height: 40px;
 }
-
 #signup:hover {
-	color: #FEEBE7;
-	background: #F54927;
+	background: #00F5D4; /* Di chuột vào sẽ sáng rực lên */
 }
 
-#forgot_pass, #nav_login {
-	color: blue;
+/* Chữ gợi ý và link Login */
+#label_5 {
+	color: #E0E1DD;
+}
+#nav_login {
+	color: #00F5D4;
 	background: transparent;
 	border: none;
 	outline: none;	
 	text-align: left; 
+}
+#nav_login:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
 }</string>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+    <property name="spacing">
+     <number>11</number>
+    </property>
+    <property name="leftMargin">
+     <number>11</number>
+    </property>
+    <property name="topMargin">
+     <number>11</number>
+    </property>
     <item>
      <widget class="QWidget" name="widget" native="true">
       <property name="sizePolicy">
@@ -87,18 +124,18 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>0</width>
+        <width>400</width>
         <height>600</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
+        <width>400</width>
         <height>600</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background: transparent;</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -112,13 +149,13 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>30</height>
+           <height>90</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>60</height>
+           <height>90</height>
           </size>
          </property>
          <property name="font">
@@ -130,7 +167,13 @@
           </font>
          </property>
          <property name="text">
-          <string>Pos</string>
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Downloads/Pos_logo-removebg-preview.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -173,7 +216,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>40</height>
+           <height>42</height>
           </size>
          </property>
          <property name="font">
@@ -181,6 +224,9 @@
            <family>Arial</family>
            <pointsize>14</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -220,7 +266,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>40</height>
+           <height>42</height>
           </size>
          </property>
          <property name="font">
@@ -228,6 +274,9 @@
            <family>Arial</family>
            <pointsize>14</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -261,7 +310,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>40</height>
+           <height>42</height>
           </size>
          </property>
          <property name="baseSize">
@@ -275,6 +324,9 @@
            <family>Arial</family>
            <pointsize>14</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -311,7 +363,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>40</height>
+           <height>42</height>
           </size>
          </property>
          <property name="baseSize">
@@ -328,13 +380,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">#password_2 {
-	background: #4BB8FA;
-	border: none;
-	outline: none;
-	border-radius: 10px;
-	min-height: 40px;
-}</string>
+          <string notr="true"/>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -348,6 +394,9 @@
            <width>16777215</width>
            <height>130</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: transparent;</string>
          </property>
          <property name="text">
           <string/>
@@ -370,9 +419,12 @@
          </property>
          <property name="font">
           <font>
-           <family>Arial Black</family>
-           <pointsize>16</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(85, 170, 255);</string>
          </property>
          <property name="text">
           <string>Register</string>
@@ -392,6 +444,9 @@
            <width>16777215</width>
            <height>50</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: transparent;</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1">
           <item>
@@ -430,61 +485,40 @@
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="widget_2" native="true">
+     <widget class="QLabel" name="label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="minimumSize">
        <size>
-        <width>400</width>
-        <height>0</height>
+        <width>600</width>
+        <height>600</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
+        <width>600</width>
         <height>600</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background: transparent;</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>250</width>
-           <height>600</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>600</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>Logo</string>
-         </property>
-         <property name="pixmap">
-          <pixmap>../img/3766277.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../../Downloads/logo-removebg-preview.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
      </widget>
     </item>
    </layout>
