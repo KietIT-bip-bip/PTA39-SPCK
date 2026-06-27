@@ -26,28 +26,38 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#centralwidget {
-	background: #111844;
+   <string notr="true">/* Nền xanh dương cực đậm cho toàn app */
+#centralwidget {
+	background: #0A1128;
 }
 
+/* Định hình lại ô nhập liệu gọn gàng, chữ trắng */
 #email, #password {
-	background: #4BB8FA;
-	border: none;
-	outline: none;
+	background: #131F42;
+	border: 1px solid #1D2E61;
 	border-radius: 10px;
 	min-height: 40px;
+	padding-left: 10px;
+	color: #FFFFFF;
 }
+#email:focus, #password:focus {
+	border: 1.5px solid #00B4D8; /* Lên viền xanh sáng giống màu logo khi click vào */
+}
+
+/* Nút Login nổi bật màu xanh Cyan của logo */
 #login {
-	color:  #4BB8FA;
+	background: #00B4D8;
+	color:  #0A1128;
 	border: none;
 	outline: none;
 	border-radius: 10px;
 	min-height: 40px;
 }
 #login:hover {
-	color: #111844;
-	background: #4BB8FA;
+	background: #00F5D4; /* Sáng rực lên khi hover chuột */
 }
+
+/* Mấy cái nút chuyển hướng phụ */
 #forgot_password, #nav_signup {
 	color: #C1EBE9;
 	background: transparent;
@@ -55,11 +65,13 @@
 	outline: none;	
 	text-align: left; 
 }
-#label_2,#label_3 {
-	color: #4BB8FA;
+#forgot_password:hover, #nav_signup:hover {
+	color: #00B4D8; /* Đổi màu nhẹ khi rê chuột vào */
 }
-#label_4 {
-	color: #4BB8FA;
+
+/* Màu chữ cho các Label tiêu đề */
+#label_2, #label_3, #label_4 {
+	color: #00B4D8;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -67,7 +79,7 @@
     <item>
      <widget class="QWidget" name="widget_2" native="true">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
+       <string notr="true">background: transparent;</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -79,10 +91,16 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(0, 255, 255);</string>
+          <string notr="true">background: transparent;</string>
          </property>
          <property name="text">
-          <string>Pos</string>
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../../../Downloads/Pos_logo-removebg-preview.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -104,7 +122,7 @@
        <item>
         <widget class="QLineEdit" name="email">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(85, 170, 0);</string>
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -126,7 +144,7 @@
        <item>
         <widget class="QLineEdit" name="password">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(85, 170, 0);</string>
+          <string notr="true"/>
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -203,10 +221,16 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 255, 255);</string>
+       <string notr="true">background: transparent;</string>
       </property>
       <property name="text">
-       <string>logo</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../../Downloads/logo-removebg-preview.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </item>

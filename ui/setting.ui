@@ -25,16 +25,26 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(16, 16, 48);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QWidget" name="thanhcongcu" native="true">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 170);</string>
+       <string notr="true">#thanhcongcu {
+    background-color: #1A1A40; 
+    border: 2px solid #4A6FA5; 
+    border-radius: 4px;    
+}   </string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
          <property name="text">
           <string>logo</string>
          </property>
@@ -48,21 +58,66 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="nut_hk1">
+         <property name="styleSheet">
+          <string notr="true">#nut_hk1 {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_hk1:hover {
+    background-color: #3b5c8a;
+}</string>
+         </property>
          <property name="text">
           <string>HK1</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="nut_hk2">
+         <property name="styleSheet">
+          <string notr="true">#nut_hk2 {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_hk2:hover {
+    background-color: #3b5c8a;
+}</string>
+         </property>
          <property name="text">
           <string>HK2</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="nut_canam">
+         <property name="styleSheet">
+          <string notr="true">#nut_canam {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_canam:hover {
+    background-color: #3b5c8a;
+}</string>
+         </property>
          <property name="text">
           <string>Cả năm</string>
          </property>
@@ -82,7 +137,10 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="nut_caidat">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
          <property name="text">
           <string>Cài đặt</string>
          </property>
@@ -94,40 +152,45 @@
     <item>
      <widget class="QWidget" name="widget_2" native="true">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(188, 188, 188);</string>
+       <string notr="true">#widget_2 {
+    background-color: #1A1A40; 
+    border: 2px solid #4A6FA5; 
+    border-radius: 4px;    
+}   </string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QWidget" name="widget_3" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(131, 131, 131);</string>
+          <string notr="true">background-color: rgb(26, 26, 64);</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>pos</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QWidget" name="widget_4" native="true">
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(170, 255, 0);</string>
+             <string notr="true">#widget_4 {
+    background-color: #555565; 
+    border: 2px solid #4A6FA5; 
+    border-radius: 4px;    
+}   </string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
               <widget class="QLabel" name="label_3">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 170, 255);</string>
+                <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(85, 85, 101);</string>
                </property>
                <property name="text">
-                <string>Name</string>
+                <string>Name:</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="Line" name="line_2">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(168, 168, 168);</string>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -136,15 +199,19 @@
              <item>
               <widget class="QLabel" name="label_5">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(0, 170, 255);</string>
+                <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(85, 85, 101);</string>
                </property>
                <property name="text">
-                <string>Email</string>
+                <string>Email:</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="Line" name="line_3">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(168, 168, 168);</string>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -153,11 +220,11 @@
              <item>
               <widget class="QLabel" name="label_4">
                <property name="styleSheet">
-                <string notr="true">
-background-color: rgb(0, 170, 255);</string>
+                <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(85, 85, 101);</string>
                </property>
                <property name="text">
-                <string>SDT</string>
+                <string>SDT:</string>
                </property>
               </widget>
              </item>
@@ -183,7 +250,11 @@ background-color: rgb(0, 170, 255);</string>
        <item>
         <widget class="QWidget" name="widget_5" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 246, 175);</string>
+          <string notr="true">#widget_5 {
+    background-color: #1A1A40; 
+    border: 2px solid #4A6FA5; 
+    border-radius: 4px;    
+}   </string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
@@ -201,13 +272,29 @@ background-color: rgb(0, 170, 255);</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 127);</string>
+             <string notr="true">#widget_6 {
+    background-color: #1A1A40; 
+    border: 2px solid #4A6FA5; 
+    border-radius: 4px;    
+}   </string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
-              <widget class="QPushButton" name="pushButton_5">
+              <widget class="QPushButton" name="nut_thaydoiten">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 170, 255);</string>
+                <string notr="true">#nut_thaydoiten {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_thaydoiten:hover {
+    background-color: #3b5c8a;
+}</string>
                </property>
                <property name="text">
                 <string>Thay đổi tên</string>
@@ -228,9 +315,21 @@ background-color: rgb(0, 170, 255);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_10">
+              <widget class="QPushButton" name="nut_thaydoimatkhau">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 170, 255);</string>
+                <string notr="true">#nut_thaydoimatkhau {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_thaydoimatkhau:hover {
+    background-color: #3b5c8a;
+}</string>
                </property>
                <property name="text">
                 <string>Thay đổi mật khẩu</string>
@@ -251,9 +350,21 @@ background-color: rgb(0, 170, 255);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_8">
+              <widget class="QPushButton" name="nut_thaydoisdt">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 170, 255);</string>
+                <string notr="true">#nut_thaydoisdt {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_thaydoisdt:hover {
+    background-color: #3b5c8a;
+}</string>
                </property>
                <property name="text">
                 <string>Thay đổi SDT</string>
@@ -274,9 +385,21 @@ background-color: rgb(0, 170, 255);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_7">
+              <widget class="QPushButton" name="nut_huongdansudung">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 170, 255);</string>
+                <string notr="true">#nut_huongdansudung {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_huongdansudung:hover {
+    background-color: #3b5c8a;
+}</string>
                </property>
                <property name="text">
                 <string>Hướng dẫn sử dụng</string>
@@ -297,9 +420,21 @@ background-color: rgb(0, 170, 255);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_9">
+              <widget class="QPushButton" name="nut_danhgia">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 170, 255);</string>
+                <string notr="true">#nut_danhgia {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_danhgia:hover {
+    background-color: #3b5c8a;
+}</string>
                </property>
                <property name="text">
                 <string>Đánh giá </string>
@@ -320,9 +455,21 @@ background-color: rgb(0, 170, 255);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_6">
+              <widget class="QPushButton" name="nut_dangxuat">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 170, 255);</string>
+                <string notr="true">#nut_dangxuat {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_dangxuat:hover {
+    background-color: #3b5c8a;
+}</string>
                </property>
                <property name="text">
                 <string>Đăng Xuất</string>
@@ -334,6 +481,9 @@ background-color: rgb(0, 170, 255);</string>
           </item>
           <item>
            <widget class="QLabel" name="label_7">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>Logo</string>
             </property>
@@ -345,7 +495,8 @@ background-color: rgb(0, 170, 255);</string>
        <item>
         <widget class="QLabel" name="label_6">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 85, 255);</string>
+          <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(85, 85, 101);</string>
          </property>
          <property name="text">
           <string>Phiên bản hiện tại: Beta</string>
