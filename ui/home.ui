@@ -82,7 +82,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="nut_caidat">
          <property name="text">
           <string>Cài đặt</string>
          </property>
@@ -104,21 +104,21 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
-              <widget class="QLabel" name="label_2">
+              <widget class="QLabel" name="lab_hoten">
                <property name="text">
                 <string>Username:</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_5">
+              <widget class="QLabel" name="lab_lop">
                <property name="text">
                 <string>Lớp:</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_4">
+              <widget class="QLabel" name="lab_hocluc">
                <property name="text">
                 <string>Học Lực:</string>
                </property>
@@ -176,9 +176,9 @@
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>0</y>
-               <width>789</width>
-               <height>3022</height>
+               <y>-2082</y>
+               <width>828</width>
+               <height>3018</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_5">

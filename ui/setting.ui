@@ -48,21 +48,21 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="nut_hk1">
          <property name="text">
           <string>HK1</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="nut_hk2">
          <property name="text">
           <string>HK2</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_4">
+        <widget class="QPushButton" name="nut_canam">
          <property name="text">
           <string>Cả năm</string>
          </property>
@@ -82,7 +82,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="nut_caidat">
          <property name="text">
           <string>Cài đặt</string>
          </property>

@@ -15,5 +15,15 @@ class HomePage(QMainWindow):
         ui_path = self.root_dir + "/ui/home.ui"
         uic.loadUi(ui_path, self)
         
+        
+        # bat su kien 
+        # sidebar
+        self.ket_noi_sidebar()
+        
+        # thong tin hoc sinh
+        self.hien_thi_thong_tin()
+        
+        # hien thi thong tin hoc ki
+        
         # hien thi giao dien
         self.show()
