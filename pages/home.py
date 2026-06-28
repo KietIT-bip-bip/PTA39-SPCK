@@ -239,7 +239,7 @@ class HomePage(QMainWindow):
 
     def hien_thi_thong_tin_hoc_sinh(self):
         """Hiển thị tên học sinh và học lực lên vùng header."""
-        self.username.setText(f"Username: {self.cur_acc.fullname}")
+        self.username.setText(f"username: {self.cur_acc["fullname"]}")
         self.hoc_luc_allyear.setText("Học Lực: Chưa tổng kết")
 
     # ----------------------------------------------------------

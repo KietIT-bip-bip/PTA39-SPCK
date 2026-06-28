@@ -47,7 +47,7 @@ class SettingPage(QMainWindow):
     def hien_thi_thong_tin(self):
         self.username.setText(f"Name: {self.cur_acc["fullname"]}")
         self.email.setText(f"Email: {self.cur_acc["email"]}")
-        if self.cur_acc["sdt"]:
+        if "sdt" in self.cur_acc:
             self.sdt.setText(f"SDT: {self.cur_acc["sdt"]}")
         else:
             self.sdt.setText(f"SDT: chưa cập nhật")
