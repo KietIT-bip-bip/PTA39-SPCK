@@ -387,7 +387,7 @@ color: rgb(255, 255, 255);</string>
                         </widget>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="cal_hk">
+                        <widget class="QPushButton" name="nut_tinh_tb_hk">
                          <property name="font">
                           <font>
                            <pointsize>9</pointsize>
@@ -404,7 +404,7 @@ color: rgb(255, 255, 255);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_9" native="true">
+                     <widget class="QWidget" name="subject_list" native="true">
                       <property name="styleSheet">
                        <string notr="true">background-color: rgb(173, 173, 173);</string>
                       </property>
@@ -494,19 +494,6 @@ color: rgb(255, 255, 255);</string>
                           </item>
                          </layout>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QWidget" name="widget_10" native="true">
