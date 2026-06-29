@@ -184,7 +184,7 @@ class HomePage(QMainWindow):
         # Tên widget trong home.ui: nut_tinh_tb_hk (HK1), cal_hk_2 (HK2), cal_hk_3 (Cả năm)
         self.nut_tinh_tb_hk.clicked.connect(self.tinh_va_hien_thi_tb_hk1)
         self.cal_hk_2.clicked.connect(self.on_nut_tinh_tb_hk2_clicked)
-        self.cal_hk_3.clicked.connect(self.cap_nhat_bang_diem_ca_nam)
+        # self.cal_hk_3.clicked.connect(self.cap_nhat_bang_diem_ca_nam)
 
     # ----------------------------------------------------------
     # PHẦN 3: ĐIỀU HƯỚNG (NAVIGATION)
@@ -243,6 +243,7 @@ class HomePage(QMainWindow):
         """Hiển thị tên học sinh và học lực lên vùng header."""
         self.username.setText(f"username: {self.cur_acc["fullname"]}")
         self.hoc_luc_allyear.setText("Học Lực: Chưa tổng kết")
+        self.hoc_luc_allyear_lb.setText("Chưa tổng kết")
 
     # ----------------------------------------------------------
     # PHẦN 5: TÍNH ĐIỂM TRUNG BÌNH
@@ -418,6 +419,70 @@ class HomePage(QMainWindow):
             # Chỉ cập nhật nếu cả 2 học kỳ đã có điểm
             if diem_hk1 is not None and diem_hk2 is not None:
                 widget_canam.cap_nhat_diem(diem_hk1, diem_hk2)
+
+        # Sau khi cập nhật xong điểm từng môn → cập nhật học lực tổng
+        self.cap_nhat_hoc_luc_allyear()
+
+    # ----------------------------------------------------------
+
+    def cap_nhat_hoc_luc_allyear(self):
+        """
+        Cập nhật label học lực tổng trên sidebar (hoc_luc_allyear)
+        và label trong tab Cả năm (hoc_luc_allyear_lb).
+
+        Logic:
+            - Chỉ HK1 đã tính  → hoc_luc_allyear = "Học Lực HK1: <kết quả>"
+            - Cả HK1 + HK2 đã tính → tính học lực cả năm từ sub_tb_allyear
+              của từng SubAllyearWidget, rồi cập nhật cả 2 label
+
+        Hàm được gọi tự động ở cuối cap_nhat_bang_diem_ca_nam().
+        """
+        # Đọc kết quả học lực đã hiển thị trên header HK1 và HK2
+        hoc_luc_hk1 = self.hoc_luc.text().strip()
+        hoc_luc_hk2 = self.label_21.text().strip()
+
+        # Giá trị mặc định của 2 label trong file .ui (chưa tính)
+        GIA_TRI_MAC_DINH = {"", "Học lực", "Học Lực", "Chưa đánh giá"}
+
+        hk1_da_tinh = hoc_luc_hk1 not in GIA_TRI_MAC_DINH
+        hk2_da_tinh = hoc_luc_hk2 not in GIA_TRI_MAC_DINH
+
+        if not hk1_da_tinh:
+            return  # Chưa có học kỳ nào → không làm gì
+
+        if not hk2_da_tinh:
+            # Chỉ có HK1 → hiển thị tạm học lực HK1 lên sidebar
+            self.hoc_luc_allyear.setText(f"Học Lực HK1: {hoc_luc_hk1}")
+            return
+
+        # Có cả HK1 và HK2 → đọc điểm TB cả năm từ SubAllyearWidget
+        danh_sach_diem_ca_nam = []
+        tat_ca_mon_dac_biet_dat = True
+
+        for widget_canam in self.danh_sach_widget_canam:
+            gia_tri = widget_canam.sub_tb_allyear.text().strip()
+
+            if widget_canam.is_special:
+                # Môn đặc biệt: kiểm tra có K Đạt không
+                if gia_tri == "K Đạt":
+                    tat_ca_mon_dac_biet_dat = False
+            else:
+                # Môn thường: lấy điểm số (bỏ qua nếu chưa tính "--")
+                try:
+                    danh_sach_diem_ca_nam.append(float(gia_tri))
+                except ValueError:
+                    pass
+
+        if len(danh_sach_diem_ca_nam) == 0:
+            return  # Chưa có đủ dữ liệu cả năm
+
+        hoc_luc_ca_nam = self.xac_dinh_hoc_luc(
+            danh_sach_diem_ca_nam, tat_ca_mon_dac_biet_dat
+        )
+
+        # Cập nhật label sidebar và label trong tab Cả năm
+        self.hoc_luc_allyear.setText(f"Học Lực: {hoc_luc_ca_nam}")
+        self.hoc_luc_allyear_lb.setText(hoc_luc_ca_nam)
 
     # ----------------------------------------------------------
     # PHẦN 6: XÁC ĐỊNH HỌC LỰC

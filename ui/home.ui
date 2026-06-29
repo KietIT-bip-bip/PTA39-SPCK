@@ -250,7 +250,7 @@ border-radius: 4px;</string>
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>-1844</y>
+               <y>-1968</y>
                <width>830</width>
                <height>3018</height>
               </rect>
@@ -3053,33 +3053,9 @@ color: rgb(255, 255, 255);</string>
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_45">
-                         <property name="styleSheet">
-                          <string notr="true">border: 2px solid #4A6FA5;</string>
-                         </property>
+                        <widget class="QLabel" name="hoc_luc_allyear_lb">
                          <property name="text">
-                          <string>Học lực</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_148">
-                         <property name="text">
-                          <string>TB Cả năm</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="cal_hk_3">
-                         <property name="font">
-                          <font>
-                           <pointsize>9</pointsize>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Tính Điểm TB</string>
+                          <string>Hoc luc</string>
                          </property>
                         </widget>
                        </item>

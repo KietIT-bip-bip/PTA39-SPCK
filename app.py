@@ -18,10 +18,10 @@ if __name__ == "__main__":
     # tránh bị đổi màu theo theme tối/sáng của hệ điều hành
     app.setStyleSheet("* { color: black; }")
 
-    first_page = LoginPage(main_window=None, root_dir=BASE_DIR)
-    # first_page = HomePage(
-    #     main_window=None,
-    #     root_dir=BASE_DIR,
-    #     cur_acc={"fullname": "Kiet", "email": "Kiet@gmail.com", "password": "150110"},
-    # )
+    # first_page = LoginPage(main_window=None, root_dir=BASE_DIR)
+    first_page = HomePage(
+        main_window=None,
+        root_dir=BASE_DIR,
+        cur_acc={"fullname": "Kiet", "email": "Kiet@gmail.com", "password": "150110"},
+    )
     sys.exit(app.exec())
