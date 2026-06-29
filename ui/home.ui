@@ -250,9 +250,9 @@ border-radius: 4px;</string>
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>-1932</y>
-               <width>791</width>
-               <height>3022</height>
+               <y>-1844</y>
+               <width>830</width>
+               <height>3018</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -416,7 +416,7 @@ color: rgb(255, 255, 255);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="subject_list" native="true">
+                     <widget class="QWidget" name="subject_list_hk1" native="true">
                       <property name="styleSheet">
                        <string notr="true">background-color: rgb(173, 173, 173);</string>
                       </property>
@@ -1745,7 +1745,7 @@ color: rgb(255, 255, 255);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_24" native="true">
+                     <widget class="QWidget" name="subject_list_hk2" native="true">
                       <property name="styleSheet">
                        <string notr="true">background-color: rgb(173, 173, 173);</string>
                       </property>
@@ -3087,7 +3087,7 @@ color: rgb(255, 255, 255);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_39" native="true">
+                     <widget class="QWidget" name="subject_list_allyear" native="true">
                       <property name="styleSheet">
                        <string notr="true">background-color: rgb(173, 173, 173);</string>
                       </property>

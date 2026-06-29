@@ -131,9 +131,9 @@ class HomePage(QMainWindow):
             - widget_39.layout() → chứa 12 SubAllyearWidget cho Cả năm
         """
         # Lấy layout của các vùng chứa môn học
-        layout_hk1 = self.widget_9.layout()
-        layout_hk2 = self.widget_24.layout()
-        layout_canam = self.widget_39.layout()
+        layout_hk1 = self.subject_list_hk1.layout()
+        layout_hk2 = self.subject_list_hk2.layout()
+        layout_canam = self.subject_list_allyear.layout()
 
         # Xóa các widget cứng có sẵn trong file .ui
         self.xoa_tat_ca_widget_trong_layout(layout_hk1)
@@ -180,9 +180,11 @@ class HomePage(QMainWindow):
         # Sidebar: chuyển sang trang cài đặt
         self.nut_caidat.clicked.connect(self.goto_setting)
 
-        # Nút tính điểm TB nằm trong header của khối HK1
-        # Tên widget trong home.ui: cal_hk
-        self.cal_hk.clicked.connect(self.tinh_va_hien_thi_tb_hk1)
+        # Nút tính điểm TB nằm trong header của từng khối học kỳ
+        # Tên widget trong home.ui: nut_tinh_tb_hk (HK1), cal_hk_2 (HK2), cal_hk_3 (Cả năm)
+        self.nut_tinh_tb_hk.clicked.connect(self.tinh_va_hien_thi_tb_hk1)
+        self.cal_hk_2.clicked.connect(self.on_nut_tinh_tb_hk2_clicked)
+        self.cal_hk_3.clicked.connect(self.cap_nhat_bang_diem_ca_nam)
 
     # ----------------------------------------------------------
     # PHẦN 3: ĐIỀU HƯỚNG (NAVIGATION)
@@ -324,6 +326,9 @@ class HomePage(QMainWindow):
         )
         self.hoc_luc.setText(hoc_luc)
 
+        # Tự động cập nhật điểm cả năm nếu HK2 đã tính trước đó
+        self.cap_nhat_bang_diem_ca_nam()
+
     # ----------------------------------------------------------
 
     def tinh_va_hien_thi_tb_hk2(self):
@@ -363,6 +368,30 @@ class HomePage(QMainWindow):
             danh_sach_diem_mon_thuong, tat_ca_mon_dac_biet_dat
         )
         self.label_21.setText(hoc_luc)
+
+    # ----------------------------------------------------------
+
+    def on_nut_tinh_tb_hk2_clicked(self):
+        """
+        Xử lý sự kiện khi người dùng bấm nút "Tính điểm TB" ở khối HK2.
+
+        Quy trình:
+            1. Kiểm tra đủ điểm tất cả 12 môn chưa → báo lỗi nếu thiếu
+            2. Gọi tinh_va_hien_thi_tb_hk2() để tính và hiển thị kết quả
+            3. Tự động cập nhật bảng cả năm nếu HK1 đã tính trước đó
+
+        Nút gắn với hàm này: cal_hk_2 (trong widget_23 của home.ui)
+        """
+        # Bước 1: Kiểm tra đủ điểm chưa
+        if not self.kiem_tra_du_diem(self.danh_sach_widget_hk2):
+            self.show_message("Vui lòng nhập đủ điểm tất cả các môn HK2 trước khi tính!")
+            return
+
+        # Bước 2: Tính TB HK2 và hiển thị lên giao diện
+        self.tinh_va_hien_thi_tb_hk2()
+
+        # Bước 3: Tự động cập nhật điểm cả năm nếu HK1 đã tính trước đó
+        self.cap_nhat_bang_diem_ca_nam()
 
     # ----------------------------------------------------------
 
