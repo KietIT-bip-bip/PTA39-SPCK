@@ -51,7 +51,7 @@
           <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
-          <string>logo</string>
+          <string>TechOption</string>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -146,6 +146,33 @@
        </item>
        <item>
         <widget class="QPushButton" name="nut_caidat">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_caidat {
+    background-color: #4A6FA5; 
+    color: white;              
+    border: 1px solid #ffffff; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_caidat:hover {
+    background-color: #3b5c8a;
+}</string>
+         </property>
          <property name="text">
           <string>Cài đặt</string>
          </property>
@@ -250,9 +277,9 @@ border-radius: 4px;</string>
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>-1968</y>
-               <width>830</width>
-               <height>3018</height>
+               <y>-917</y>
+               <width>791</width>
+               <height>3022</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -400,12 +427,28 @@ color: rgb(255, 255, 255);</string>
                        </item>
                        <item>
                         <widget class="QPushButton" name="nut_tinh_tb_hk">
+                         <property name="minimumSize">
+                          <size>
+                           <width>95</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>95</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
                          <property name="font">
                           <font>
                            <pointsize>9</pointsize>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">    border: 1px solid #ffffff; 
+    border-radius: 4px;</string>
                          </property>
                          <property name="text">
                           <string>Tính điểm TB</string>
@@ -1729,12 +1772,28 @@ color: rgb(255, 255, 255);</string>
                        </item>
                        <item>
                         <widget class="QPushButton" name="cal_hk_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>95</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>95</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
                          <property name="font">
                           <font>
                            <pointsize>9</pointsize>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">    border: 1px solid #ffffff; 
+    border-radius: 4px;</string>
                          </property>
                          <property name="text">
                           <string>Tính điểm TB</string>
