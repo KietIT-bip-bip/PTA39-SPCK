@@ -3,7 +3,9 @@
 # Hiển thị bảng điểm học kỳ 1, học kỳ 2 và cả năm.
 # Cho phép người dùng nhập điểm và tính trung bình học kỳ.
 
-from PyQt6.QtWidgets import QMainWindow, QMessageBox
+import os
+
+from PyQt6.QtWidgets import QMainWindow, QMessageBox, QWidget
 from PyQt6 import uic
 
 from pages.sub_term_widget import SubTermWidget
@@ -14,70 +16,90 @@ class HomePage(QMainWindow):
     """
     Trang chính của ứng dụng quản lý điểm học sinh.
 
-    Cấu trúc giao diện (từ home.ui):
-        - Sidebar trái  : nút HK1, HK2, Cả năm, Cài đặt
-        - Nội dung phải : scroll area chứa 3 khối (HK1 / HK2 / Cả năm)
-            + widget_6  : khối HK1 (header + danh sách 12 môn)
-            + widget_7  : khối HK2 (header + danh sách 12 môn)
-            + widget_37 : khối Cả năm (header + danh sách 12 môn)
-
-    Chức năng chính:
-        - Hiển thị/ẩn khối theo học kỳ đang xem
-        - Cho phép nhập điểm từng môn
-        - Tính TB học kỳ và xác định học lực khi bấm nút "Tính điểm TB"
-        - Tự động cập nhật điểm cả năm khi chuyển sang tab "Cả năm"
+    Mọi tên widget trong file .ui được gom vào bảng TEN_WIDGET bên dưới.
+    Nếu đổi tên widget trong Qt Designer, CHỈ cần sửa bảng đó.
     """
 
+    # Tên file giao diện nằm trong thư mục ui/
+    TEN_FILE_UI = "home_basic.ui"
+
     # ----------------------------------------------------------
-    # Danh sách 12 môn học theo đúng thứ tự trong home.ui
-    # Mỗi phần tử là tuple: (tên hiển thị, là_môn_đặc_biệt)
+    # BẢNG TÊN WIDGET: "vai trò trong code": "objectName trong file .ui"
+    # Sửa cột bên phải cho khớp với home_basic.ui của bạn.
+    # ----------------------------------------------------------
+    TEN_WIDGET = {
+        # (3 khối HK1/HK2/Cả năm được code tự tìm, xem anh_xa_widget)
+        # 3 vùng chứa danh sách môn (phải có layout bên trong)
+        "ds_mon_hk1": "subject_list_hk1",
+        "ds_mon_hk2": "subject_list_hk2",
+        "ds_mon_canam": "subject_list_allyear",
+        # Nút ở sidebar
+        "nut_hk1": "nut_hk1",
+        "nut_hk2": "nut_hk2",
+        "nut_canam": "nut_canam",
+        "nut_caidat": "nut_caidat",
+        # Nút "Tính điểm TB" trong header mỗi học kỳ
+        "nut_tinh_hk1": "nut_tinh_tb_hk",
+        "nut_tinh_hk2": "cal_hk_2",
+        # Label / ô hiển thị
+        "lbl_username": "username",
+        "lbl_hoc_luc_sidebar": "hoc_luc_allyear",
+        "lbl_hoc_luc_canam": "hoc_luc_allyear_lb",
+        # HK1: đang đoán (lineEdit_85, label_9), kiểm tra lại trong Designer
+        "o_tb_hk1": "lineEdit_85",
+        "lbl_hoc_luc_hk1": "label_9",
+        # HK2: đi cặp với nút cal_hk_2
+        "o_tb_hk2": "tb_term_2",
+        "lbl_hoc_luc_hk2": "hoc_luc_2",
+    }
+
+    # ----------------------------------------------------------
+    # Danh sách 12 môn học: (tên hiển thị, là_môn_đặc_biệt)
     # Môn đặc biệt = môn Đạt/K Đạt (không tính điểm số)
     # ----------------------------------------------------------
     DANH_SACH_MON_HOC = [
-        ("Toán", False),  # Môn thường
-        ("Ngữ Văn", False),  # Môn thường
-        ("Tiếng Anh", False),  # Môn thường
-        ("KHTN", False),  # Môn thường
-        ("Lịch Sử & Địa Lý", False),  # Môn thường
-        ("Tin Học", False),  # Môn thường
-        ("GDCD", False),  # Môn thường
-        ("Công Nghệ", False),  # Môn thường
-        ("Âm Nhạc", True),  # Môn đặc biệt (Đạt/K Đạt)
-        ("Mĩ Thuật", True),  # Môn đặc biệt (Đạt/K Đạt)
-        ("Thể Dục", True),  # Môn đặc biệt (Đạt/K Đạt)
-        ("GDĐP", True),  # Môn đặc biệt (Đạt/K Đạt)
+        ("Toán", False),
+        ("Ngữ Văn", False),
+        ("Tiếng Anh", False),
+        ("KHTN", False),
+        ("Lịch Sử & Địa Lý", False),
+        ("Tin Học", False),
+        ("GDCD", False),
+        ("Công Nghệ", False),
+        ("Âm Nhạc", True),
+        ("Mĩ Thuật", True),
+        ("Thể Dục", True),
+        ("GDĐP", True),
     ]
 
     # ----------------------------------------------------------
 
     def __init__(self, main_window, root_dir, cur_acc):
         """
-        Khởi tạo trang chủ.
-
         Tham số:
             main_window : cửa sổ chính của ứng dụng (dùng để điều hướng)
             root_dir    : đường dẫn thư mục gốc của dự án
-            cur_acc     : tài khoản đang đăng nhập (object Student hoặc tương tự)
+            cur_acc     : tài khoản đang đăng nhập (dict có "fullname", ...)
         """
         super().__init__()
 
         self.main_window = main_window
-        self.root_dir = root_dir
+        self.root_dir = str(root_dir)
         self.cur_acc = cur_acc
 
-        # Load giao diện từ file home.ui
-        ui_path = self.root_dir + "/ui/home.ui"
+        # Load giao diện từ file .ui
+        ui_path = os.path.join(self.root_dir, "ui", self.TEN_FILE_UI)
         uic.loadUi(ui_path, self)
 
-        # Danh sách lưu 12 SubTermWidget cho từng học kỳ
-        # Mỗi phần tử ứng với 1 môn học (theo thứ tự DANH_SACH_MON_HOC)
+        # Kiểm tra toàn bộ tên widget MỘT LẦN, báo hết tất cả tên thiếu
+        self.anh_xa_widget()
+
+        # Danh sách lưu widget cho từng học kỳ / cả năm
         self.danh_sach_widget_hk1 = []
         self.danh_sach_widget_hk2 = []
-
-        # Danh sách lưu 12 SubAllyearWidget cho phần cả năm
         self.danh_sach_widget_canam = []
 
-        # Bước 1: Xóa các widget cứng trong UI và thêm widget động
+        # Bước 1: Xóa widget cứng trong UI và thêm widget động
         self.tao_va_chen_widget_mon_hoc()
 
         # Bước 2: Gắn sự kiện cho các nút bấm
@@ -89,75 +111,108 @@ class HomePage(QMainWindow):
         # Bước 4: Mặc định hiển thị tab HK1
         self.setup_ui_for_term_1()
 
-        # Hiển thị cửa sổ
         self.show()
+
+    # ----------------------------------------------------------
+    # PHẦN 0: ÁNH XẠ TÊN WIDGET
+    # ----------------------------------------------------------
+
+    def anh_xa_widget(self):
+        """
+        Tìm từng widget theo bảng TEN_WIDGET và gán thành thuộc tính của self
+        (self.khoi_hk1, self.nut_hk1, ...). Nếu thiếu widget nào thì báo
+        TẤT CẢ cái thiếu cùng danh sách tên thật có trong file .ui.
+        """
+        thieu = []
+        for vai_tro, ten_trong_ui in self.TEN_WIDGET.items():
+            widget = self.findChild(QWidget, ten_trong_ui)
+            if widget is None:
+                thieu.append(f"  - {vai_tro}: không thấy '{ten_trong_ui}'")
+            else:
+                setattr(self, vai_tro, widget)
+
+        # Tự tìm 3 khối: khối = widget tổ tiên của vùng danh sách môn
+        # mà nằm ngay trong scrollAreaWidgetContents
+        if not thieu:
+            noi_dung = self.findChild(QWidget, "scrollAreaWidgetContents")
+            for vai_tro, vung in (
+                ("khoi_hk1", self.ds_mon_hk1),
+                ("khoi_hk2", self.ds_mon_hk2),
+                ("khoi_canam", self.ds_mon_canam),
+            ):
+                khoi = vung
+                while khoi.parentWidget() is not None and (
+                    khoi.parentWidget() is not noi_dung
+                ):
+                    khoi = khoi.parentWidget()
+                setattr(self, vai_tro, khoi)
+
+        if thieu:
+            ten_co_san = sorted(
+                w.objectName() for w in self.findChildren(QWidget) if w.objectName()
+            )
+            raise RuntimeError(
+                f"File {self.TEN_FILE_UI} thiếu {len(thieu)} widget mà code cần:\n"
+                + "\n".join(thieu)
+                + "\n\nCác tên widget thật có trong file .ui:\n  "
+                + ", ".join(ten_co_san)
+                + "\n\n=> Sửa bảng TEN_WIDGET ở đầu class HomePage cho khớp."
+            )
 
     # ----------------------------------------------------------
     # PHẦN 1: KHỞI TẠO GIAO DIỆN
     # ----------------------------------------------------------
 
     def xoa_tat_ca_widget_trong_layout(self, layout):
-        """
-        Xóa sạch tất cả widget con bên trong một layout.
-
-        Dùng để dọn sạch các widget cứng được tạo sẵn trong file .ui
-        trước khi thêm widget động của chúng ta vào.
-
-        Tham số:
-            layout : QLayout cần xóa (VD: QVBoxLayout, QHBoxLayout)
-        """
+        """Xóa sạch tất cả widget con bên trong một layout."""
         while layout.count() > 0:
-            # takeAt(0) lấy ra phần tử đầu tiên và xóa nó khỏi layout
             item = layout.takeAt(0)
-
-            # Nếu item chứa widget thì gỡ widget đó ra
             widget = item.widget()
             if widget is not None:
-                widget.setParent(None)  # Gỡ widget khỏi cây widget
-                widget.deleteLater()  # Xếp hàng để Qt dọn bộ nhớ
-
-            # Nếu item là spacer thì Qt tự dọn khi takeAt() được gọi
+                widget.setParent(None)
+                widget.deleteLater()
 
     # ----------------------------------------------------------
 
     def tao_va_chen_widget_mon_hoc(self):
         """
         Tạo SubTermWidget và SubAllyearWidget cho 12 môn học,
-        sau đó thêm vào các layout tương ứng trong giao diện.
-
-        Vị trí các layout (theo home.ui):
-            - widget_9.layout()  → chứa 12 SubTermWidget cho HK1
-            - widget_24.layout() → chứa 12 SubTermWidget cho HK2
-            - widget_39.layout() → chứa 12 SubAllyearWidget cho Cả năm
+        rồi thêm vào layout của 3 vùng danh sách môn.
         """
-        # Lấy layout của các vùng chứa môn học
-        layout_hk1 = self.subject_list_hk1.layout()
-        layout_hk2 = self.subject_list_hk2.layout()
-        layout_canam = self.subject_list_allyear.layout()
+        layout_hk1 = self.ds_mon_hk1.layout()
+        layout_hk2 = self.ds_mon_hk2.layout()
+        layout_canam = self.ds_mon_canam.layout()
 
-        # Xóa các widget cứng có sẵn trong file .ui
+        # Báo rõ nếu vùng chứa chưa có layout (tránh lỗi 'NoneType')
+        for ten, layout in (
+            ("ds_mon_hk1", layout_hk1),
+            ("ds_mon_hk2", layout_hk2),
+            ("ds_mon_canam", layout_canam),
+        ):
+            if layout is None:
+                raise RuntimeError(
+                    f"Widget '{self.TEN_WIDGET[ten]}' chưa có layout. "
+                    "Trong Qt Designer: chuột phải vào nó → Lay out → "
+                    "Lay Out Vertically."
+                )
+
         self.xoa_tat_ca_widget_trong_layout(layout_hk1)
         self.xoa_tat_ca_widget_trong_layout(layout_hk2)
         self.xoa_tat_ca_widget_trong_layout(layout_canam)
 
-        # Tạo widget mới cho từng môn học
         for ten_mon, la_mon_dac_biet in self.DANH_SACH_MON_HOC:
-
-            # --- Tạo widget cho HK1 ---
             widget_mon_hk1 = SubTermWidget(
                 root_dir=self.root_dir, ten_mon_hoc=ten_mon, is_special=la_mon_dac_biet
             )
             self.danh_sach_widget_hk1.append(widget_mon_hk1)
             layout_hk1.addWidget(widget_mon_hk1)
 
-            # --- Tạo widget cho HK2 ---
             widget_mon_hk2 = SubTermWidget(
                 root_dir=self.root_dir, ten_mon_hoc=ten_mon, is_special=la_mon_dac_biet
             )
             self.danh_sach_widget_hk2.append(widget_mon_hk2)
             layout_hk2.addWidget(widget_mon_hk2)
 
-            # --- Tạo widget cho Cả năm ---
             widget_mon_canam = SubAllyearWidget(
                 root_dir=self.root_dir, ten_mon_hoc=ten_mon, is_special=la_mon_dac_biet
             )
@@ -169,9 +224,7 @@ class HomePage(QMainWindow):
     # ----------------------------------------------------------
 
     def ket_noi_nut_bam(self):
-        """
-        Gắn sự kiện (event) cho tất cả các nút bấm trong giao diện.
-        """
+        """Gắn sự kiện cho tất cả các nút bấm trong giao diện."""
         # Sidebar: chuyển tab xem điểm
         self.nut_hk1.clicked.connect(self.setup_ui_for_term_1)
         self.nut_hk2.clicked.connect(self.setup_ui_for_term_2)
@@ -180,11 +233,9 @@ class HomePage(QMainWindow):
         # Sidebar: chuyển sang trang cài đặt
         self.nut_caidat.clicked.connect(self.goto_setting)
 
-        # Nút tính điểm TB nằm trong header của từng khối học kỳ
-        # Tên widget trong home.ui: nut_tinh_tb_hk (HK1), cal_hk_2 (HK2), cal_hk_3 (Cả năm)
-        self.nut_tinh_tb_hk.clicked.connect(self.tinh_va_hien_thi_tb_hk1)
-        self.cal_hk_2.clicked.connect(self.on_nut_tinh_tb_hk2_clicked)
-        # self.cal_hk_3.clicked.connect(self.cap_nhat_bang_diem_ca_nam)
+        # Nút tính điểm TB trong header từng học kỳ
+        self.nut_tinh_hk1.clicked.connect(self.tinh_va_hien_thi_tb_hk1)
+        self.nut_tinh_hk2.clicked.connect(self.on_nut_tinh_tb_hk2_clicked)
 
     # ----------------------------------------------------------
     # PHẦN 3: ĐIỀU HƯỚNG (NAVIGATION)
@@ -201,38 +252,25 @@ class HomePage(QMainWindow):
 
     # ----------------------------------------------------------
 
+    def hien_khoi(self, khoi_can_hien):
+        """Chỉ hiện khối được chọn, ẩn 2 khối còn lại."""
+        for khoi in (self.khoi_hk1, self.khoi_hk2, self.khoi_canam):
+            khoi.setVisible(khoi is khoi_can_hien)
+
     def setup_ui_for_term_1(self):
-        """
-        Chuyển giao diện sang chế độ xem Học Kỳ 1.
-        Chỉ hiển thị khối HK1, ẩn HK2 và Cả năm.
-        """
-        self.widget_6.setVisible(True)  # Hiện khối HK1
-        self.widget_7.setVisible(False)  # Ẩn khối HK2
-        self.widget_37.setVisible(False)  # Ẩn khối Cả năm
+        """Xem Học Kỳ 1."""
+        self.hien_khoi(self.khoi_hk1)
 
     def setup_ui_for_term_2(self):
-        """
-        Chuyển giao diện sang chế độ xem Học Kỳ 2.
-        Chỉ hiển thị khối HK2, ẩn HK1 và Cả năm.
-        """
-        self.widget_6.setVisible(False)  # Ẩn khối HK1
-        self.widget_7.setVisible(True)  # Hiện khối HK2
-        self.widget_37.setVisible(False)  # Ẩn khối Cả năm
+        """Xem Học Kỳ 2 (tự tính TB nếu đã nhập đủ điểm)."""
+        self.hien_khoi(self.khoi_hk2)
 
-        # Tự động tính TB HK2 nếu tất cả môn đã nhập đủ điểm
         if self.kiem_tra_du_diem(self.danh_sach_widget_hk2):
             self.tinh_va_hien_thi_tb_hk2()
 
     def setup_ui_for_allyear(self):
-        """
-        Chuyển giao diện sang chế độ xem Cả năm.
-        Tự động cập nhật điểm cả năm từ kết quả HK1 và HK2.
-        """
-        self.widget_6.setVisible(False)  # Ẩn khối HK1
-        self.widget_7.setVisible(False)  # Ẩn khối HK2
-        self.widget_37.setVisible(True)  # Hiện khối Cả năm
-
-        # Cập nhật bảng cả năm từ dữ liệu đã tính ở HK1 và HK2
+        """Xem Cả năm (tự cập nhật từ kết quả HK1 và HK2)."""
+        self.hien_khoi(self.khoi_canam)
         self.cap_nhat_bang_diem_ca_nam()
 
     # ----------------------------------------------------------
@@ -241,61 +279,37 @@ class HomePage(QMainWindow):
 
     def hien_thi_thong_tin_hoc_sinh(self):
         """Hiển thị tên học sinh và học lực lên vùng header."""
-        self.username.setText(f"username: {self.cur_acc["fullname"]}")
-        self.hoc_luc_allyear.setText("Học Lực: Chưa tổng kết")
-        self.hoc_luc_allyear_lb.setText("Chưa tổng kết")
+        ho_ten = self.cur_acc["fullname"]
+        self.lbl_username.setText(f"username: {ho_ten}")
+        self.lbl_hoc_luc_sidebar.setText("Học Lực: Chưa tổng kết")
+        self.lbl_hoc_luc_canam.setText("Chưa tổng kết")
 
     # ----------------------------------------------------------
     # PHẦN 5: TÍNH ĐIỂM TRUNG BÌNH
     # ----------------------------------------------------------
 
     def kiem_tra_du_diem(self, danh_sach_widget):
-        """
-        Kiểm tra xem tất cả 12 môn trong danh sách đã nhập đủ điểm chưa.
-
-        Tham số:
-            danh_sach_widget : danh sách 12 SubTermWidget (HK1 hoặc HK2)
-
-        Trả về:
-            True  nếu tất cả 12 môn đều đã nhập đầy đủ
-            False nếu còn ít nhất 1 môn chưa đủ
-        """
+        """True nếu tất cả 12 môn đã nhập đủ điểm."""
         for widget_mon in danh_sach_widget:
             if not widget_mon.tat_ca_da_nhap():
-                return False  # Tìm thấy môn chưa đủ điểm
-
-        return True  # Tất cả đã đủ
+                return False
+        return True
 
     # ----------------------------------------------------------
 
     def tinh_va_hien_thi_tb_hk1(self):
-        """
-        Tính điểm trung bình Học Kỳ 1 và hiển thị học lực.
-
-        Quy trình:
-            1. Kiểm tra đủ điểm tất cả 12 môn chưa
-            2. Gọi tinh_trung_binh() trên từng SubTermWidget → kết quả hiện lên sub_tb
-            3. Thu thập điểm 8 môn thường → tính TB học kỳ
-            4. Kiểm tra môn đặc biệt có K Đạt không
-            5. Xác định học lực → hiển thị lên header
-
-        Nút gắn với hàm này: cal_hk (trong widget_11 của home.ui)
-        """
-        # Kiểm tra đủ điểm chưa
+        """Tính điểm TB Học Kỳ 1 và hiển thị học lực."""
         if not self.kiem_tra_du_diem(self.danh_sach_widget_hk1):
             self.show_message("Vui lòng nhập đủ điểm tất cả các môn trước khi tính!")
             return
 
-        # Thu thập điểm sau khi tính từng môn
-        danh_sach_diem_mon_thuong = []  # Lưu điểm TB 8 môn thường
-        tat_ca_mon_dac_biet_dat = True  # Theo dõi môn đặc biệt
+        danh_sach_diem_mon_thuong = []
+        tat_ca_mon_dac_biet_dat = True
 
         for widget_mon in self.danh_sach_widget_hk1:
-            # Tính TB cho môn này và hiển thị lên sub_tb
             diem_tb = widget_mon.tinh_trung_binh()
 
             if diem_tb is None:
-                # Có lỗi nhập liệu → báo và dừng
                 self.show_message(
                     f"Nhập liệu sai ở môn '{widget_mon.ten_mon_hoc}'!\n"
                     "Vui lòng kiểm tra lại."
@@ -303,41 +317,31 @@ class HomePage(QMainWindow):
                 return
 
             if widget_mon.is_special:
-                # Kiểm tra môn đặc biệt có không đạt không
                 if diem_tb == "K Đạt":
                     tat_ca_mon_dac_biet_dat = False
             else:
-                # Thu thập điểm môn thường để tính TB học kỳ
                 danh_sach_diem_mon_thuong.append(diem_tb)
 
-        # Tính TB HK1 = trung bình cộng đơn giản của 8 môn thường
         if len(danh_sach_diem_mon_thuong) > 0:
-            tong_diem = sum(danh_sach_diem_mon_thuong)
-            so_mon = len(danh_sach_diem_mon_thuong)
-            diem_tb_hk1 = round(tong_diem / so_mon, 1)
+            diem_tb_hk1 = round(
+                sum(danh_sach_diem_mon_thuong) / len(danh_sach_diem_mon_thuong), 1
+            )
         else:
             diem_tb_hk1 = 0
 
-        # Hiển thị TB HK1 vào ô tb_term (trong header widget_11)
-        self.tb_term.setText(str(diem_tb_hk1))
+        self.o_tb_hk1.setText(str(diem_tb_hk1))
 
-        # Xác định và hiển thị học lực vào label hoc_luc (trong header widget_11)
         hoc_luc = self.xac_dinh_hoc_luc(
             danh_sach_diem_mon_thuong, tat_ca_mon_dac_biet_dat
         )
-        self.hoc_luc.setText(hoc_luc)
+        self.lbl_hoc_luc_hk1.setText(hoc_luc)
 
-        # Tự động cập nhật điểm cả năm nếu HK2 đã tính trước đó
         self.cap_nhat_bang_diem_ca_nam()
 
     # ----------------------------------------------------------
 
     def tinh_va_hien_thi_tb_hk2(self):
-        """
-        Tính điểm trung bình Học Kỳ 2 và hiển thị học lực.
-        Tương tự HK1 nhưng dùng danh sách widget HK2.
-        Kết quả hiển thị vào lineEdit_86 và label_21 (header widget_23).
-        """
+        """Tính điểm TB Học Kỳ 2 và hiển thị học lực."""
         danh_sach_diem_mon_thuong = []
         tat_ca_mon_dac_biet_dat = True
 
@@ -345,7 +349,7 @@ class HomePage(QMainWindow):
             diem_tb = widget_mon.tinh_trung_binh()
 
             if diem_tb is None:
-                return  # Có lỗi, dừng lại
+                return
 
             if widget_mon.is_special:
                 if diem_tb == "K Đạt":
@@ -353,7 +357,6 @@ class HomePage(QMainWindow):
             else:
                 danh_sach_diem_mon_thuong.append(diem_tb)
 
-        # Tính TB HK2
         if len(danh_sach_diem_mon_thuong) > 0:
             diem_tb_hk2 = round(
                 sum(danh_sach_diem_mon_thuong) / len(danh_sach_diem_mon_thuong), 1
@@ -361,101 +364,65 @@ class HomePage(QMainWindow):
         else:
             diem_tb_hk2 = 0
 
-        # Hiển thị vào header HK2 (widget_23)
-        # lineEdit_86 = ô TB HKII, label_21 = nhãn Học lực
-        self.lineEdit_86.setText(str(diem_tb_hk2))
+        self.o_tb_hk2.setText(str(diem_tb_hk2))
 
         hoc_luc = self.xac_dinh_hoc_luc(
             danh_sach_diem_mon_thuong, tat_ca_mon_dac_biet_dat
         )
-        self.label_21.setText(hoc_luc)
+        self.lbl_hoc_luc_hk2.setText(hoc_luc)
 
     # ----------------------------------------------------------
 
     def on_nut_tinh_tb_hk2_clicked(self):
-        """
-        Xử lý sự kiện khi người dùng bấm nút "Tính điểm TB" ở khối HK2.
-
-        Quy trình:
-            1. Kiểm tra đủ điểm tất cả 12 môn chưa → báo lỗi nếu thiếu
-            2. Gọi tinh_va_hien_thi_tb_hk2() để tính và hiển thị kết quả
-            3. Tự động cập nhật bảng cả năm nếu HK1 đã tính trước đó
-
-        Nút gắn với hàm này: cal_hk_2 (trong widget_23 của home.ui)
-        """
-        # Bước 1: Kiểm tra đủ điểm chưa
+        """Xử lý khi bấm nút "Tính điểm TB" ở khối HK2."""
         if not self.kiem_tra_du_diem(self.danh_sach_widget_hk2):
             self.show_message("Vui lòng nhập đủ điểm tất cả các môn HK2 trước khi tính!")
             return
 
-        # Bước 2: Tính TB HK2 và hiển thị lên giao diện
         self.tinh_va_hien_thi_tb_hk2()
-
-        # Bước 3: Tự động cập nhật điểm cả năm nếu HK1 đã tính trước đó
         self.cap_nhat_bang_diem_ca_nam()
 
     # ----------------------------------------------------------
 
     def cap_nhat_bang_diem_ca_nam(self):
-        """
-        Cập nhật bảng điểm cả năm bằng cách lấy điểm TB từ HK1 và HK2.
-
-        Duyệt qua từng môn học:
-            - Lấy điểm TB HK1 từ widget HK1 tương ứng
-            - Lấy điểm TB HK2 từ widget HK2 tương ứng
-            - Gọi cap_nhat_diem() trên widget cả năm
-
-        Chỉ cập nhật môn nào mà cả 2 học kỳ đều đã có điểm.
-        """
+        """Cập nhật bảng điểm cả năm từ điểm TB của HK1 và HK2."""
         for so_thu_tu in range(len(self.DANH_SACH_MON_HOC)):
             widget_hk1 = self.danh_sach_widget_hk1[so_thu_tu]
             widget_hk2 = self.danh_sach_widget_hk2[so_thu_tu]
             widget_canam = self.danh_sach_widget_canam[so_thu_tu]
 
-            # Lấy điểm TB đã tính (trả về None nếu chưa tính)
             diem_hk1 = widget_hk1.lay_diem_trung_binh()
             diem_hk2 = widget_hk2.lay_diem_trung_binh()
 
-            # Chỉ cập nhật nếu cả 2 học kỳ đã có điểm
             if diem_hk1 is not None and diem_hk2 is not None:
                 widget_canam.cap_nhat_diem(diem_hk1, diem_hk2)
 
-        # Sau khi cập nhật xong điểm từng môn → cập nhật học lực tổng
         self.cap_nhat_hoc_luc_allyear()
 
     # ----------------------------------------------------------
 
     def cap_nhat_hoc_luc_allyear(self):
         """
-        Cập nhật label học lực tổng trên sidebar (hoc_luc_allyear)
-        và label trong tab Cả năm (hoc_luc_allyear_lb).
+        Cập nhật label học lực tổng ở sidebar và trong tab Cả năm.
 
-        Logic:
-            - Chỉ HK1 đã tính  → hoc_luc_allyear = "Học Lực HK1: <kết quả>"
-            - Cả HK1 + HK2 đã tính → tính học lực cả năm từ sub_tb_allyear
-              của từng SubAllyearWidget, rồi cập nhật cả 2 label
-
-        Hàm được gọi tự động ở cuối cap_nhat_bang_diem_ca_nam().
+            - Chỉ HK1 đã tính      → "Học Lực HK1: <kết quả>"
+            - Cả HK1 + HK2 đã tính → tính học lực cả năm
         """
-        # Đọc kết quả học lực đã hiển thị trên header HK1 và HK2
-        hoc_luc_hk1 = self.hoc_luc.text().strip()
-        hoc_luc_hk2 = self.label_21.text().strip()
+        hoc_luc_hk1 = self.lbl_hoc_luc_hk1.text().strip()
+        hoc_luc_hk2 = self.lbl_hoc_luc_hk2.text().strip()
 
-        # Giá trị mặc định của 2 label trong file .ui (chưa tính)
         GIA_TRI_MAC_DINH = {"", "Học lực", "Học Lực", "Chưa đánh giá"}
 
         hk1_da_tinh = hoc_luc_hk1 not in GIA_TRI_MAC_DINH
         hk2_da_tinh = hoc_luc_hk2 not in GIA_TRI_MAC_DINH
 
         if not hk1_da_tinh:
-            return  # Chưa có học kỳ nào → không làm gì
-
-        if not hk2_da_tinh:
-            # Chỉ có HK1 → hiển thị tạm học lực HK1 lên sidebar
-            self.hoc_luc_allyear.setText(f"Học Lực HK1: {hoc_luc_hk1}")
             return
 
-        # Có cả HK1 và HK2 → đọc điểm TB cả năm từ SubAllyearWidget
+        if not hk2_da_tinh:
+            self.lbl_hoc_luc_sidebar.setText(f"Học Lực HK1: {hoc_luc_hk1}")
+            return
+
         danh_sach_diem_ca_nam = []
         tat_ca_mon_dac_biet_dat = True
 
@@ -463,26 +430,23 @@ class HomePage(QMainWindow):
             gia_tri = widget_canam.sub_tb_allyear.text().strip()
 
             if widget_canam.is_special:
-                # Môn đặc biệt: kiểm tra có K Đạt không
                 if gia_tri == "K Đạt":
                     tat_ca_mon_dac_biet_dat = False
             else:
-                # Môn thường: lấy điểm số (bỏ qua nếu chưa tính "--")
                 try:
                     danh_sach_diem_ca_nam.append(float(gia_tri))
                 except ValueError:
                     pass
 
         if len(danh_sach_diem_ca_nam) == 0:
-            return  # Chưa có đủ dữ liệu cả năm
+            return
 
         hoc_luc_ca_nam = self.xac_dinh_hoc_luc(
             danh_sach_diem_ca_nam, tat_ca_mon_dac_biet_dat
         )
 
-        # Cập nhật label sidebar và label trong tab Cả năm
-        self.hoc_luc_allyear.setText(f"Học Lực: {hoc_luc_ca_nam}")
-        self.hoc_luc_allyear_lb.setText(hoc_luc_ca_nam)
+        self.lbl_hoc_luc_sidebar.setText(f"Học Lực: {hoc_luc_ca_nam}")
+        self.lbl_hoc_luc_canam.setText(hoc_luc_ca_nam)
 
     # ----------------------------------------------------------
     # PHẦN 6: XÁC ĐỊNH HỌC LỰC
@@ -490,39 +454,26 @@ class HomePage(QMainWindow):
 
     def xac_dinh_hoc_luc(self, danh_sach_diem_mon_thuong, tat_ca_mon_dat=True):
         """
-        Xác định học lực dựa trên điểm TB các môn thường và môn đặc biệt.
-
-        Luật xét học lực (theo quy định):
+        Luật xét học lực:
             - RỚT        : có ít nhất 1 môn đặc biệt "K Đạt"
-            - Xuất sắc   : ít nhất 6/8 môn >= 9  VÀ điểm thấp nhất >= 8
-            - Giỏi       : ít nhất 6/8 môn >= 8  VÀ điểm thấp nhất >= 6
-            - Khá        : ít nhất 6/8 môn >= 6  VÀ điểm thấp nhất >= 5
-            - Trung bình : ít nhất 6/8 môn >= 5  VÀ điểm thấp nhất >= 3.5
+            - Xuất sắc   : >= 6/8 môn >= 9  VÀ điểm thấp nhất >= 8
+            - Giỏi       : >= 6/8 môn >= 8  VÀ điểm thấp nhất >= 6
+            - Khá        : >= 6/8 môn >= 6  VÀ điểm thấp nhất >= 5
+            - Trung bình : >= 6/8 môn >= 5  VÀ điểm thấp nhất >= 3.5
             - Chưa đạt   : còn lại
-
-        Tham số:
-            danh_sach_diem_mon_thuong : list[float] - điểm TB 8 môn thường
-            tat_ca_mon_dat            : bool - False nếu có môn đặc biệt K Đạt
-
-        Trả về:
-            str - tên học lực (VD: "Giỏi", "Khá", "RỚT", ...)
         """
-        # Kiểm tra môn đặc biệt trước
         if not tat_ca_mon_dat:
             return "RỚT"
 
-        # Nếu không có dữ liệu môn thường
         if len(danh_sach_diem_mon_thuong) == 0:
             return "Chưa đánh giá"
 
-        # Tính các thống kê cần thiết
         so_mon_tren_9 = sum(1 for diem in danh_sach_diem_mon_thuong if diem >= 9)
         so_mon_tren_8 = sum(1 for diem in danh_sach_diem_mon_thuong if diem >= 8)
         so_mon_tren_6 = sum(1 for diem in danh_sach_diem_mon_thuong if diem >= 6)
         so_mon_tren_5 = sum(1 for diem in danh_sach_diem_mon_thuong if diem >= 5)
         diem_thap_nhat = min(danh_sach_diem_mon_thuong)
 
-        # Xét từ cao xuống thấp
         if so_mon_tren_9 >= 6 and diem_thap_nhat >= 8:
             return "Xuất sắc"
 
@@ -542,12 +493,7 @@ class HomePage(QMainWindow):
     # ----------------------------------------------------------
 
     def show_message(self, message):
-        """
-        Hiển thị hộp thoại thông báo cho người dùng.
-
-        Tham số:
-            message : nội dung thông báo cần hiển thị
-        """
+        """Hiển thị hộp thoại thông báo cho người dùng."""
         hop_thoai = QMessageBox()
         hop_thoai.setWindowTitle("Thông báo")
         hop_thoai.setText(message)
