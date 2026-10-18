@@ -1,93 +1,97 @@
-from PyQt6.QtWidgets import QMainWindow, QMessageBox
-import sys
+# ==========================================================
+# login.py - Trang ĐĂNG NHẬP (ui/login.ui)
+# ==========================================================
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt6 import uic
 import os
 import re
 
-# mock data
-account = {"fullname": "Kiet", "email": "Kiet@gmail.com", "password": "150110"}
+from entities.users import QuanLyNguoiDung
 
 
 class LoginPage(QMainWindow):
+    # LƯU Ý: giữ tên LoginPage, main_window, root_dir vì app.py gọi đúng tên này
     def __init__(self, main_window, root_dir):
-        super().__init__()  # ke thua cac code init cua lop cha
-        self.main_window = main_window  # luu tham so
-        self.root_dir = root_dir
+        super().__init__()  # kế thừa code __init__ của lớp cha
+        self.cua_so_chinh = main_window  # cửa sổ chính
+        self.thu_muc_goc = root_dir      # thư mục gốc của dự án
+        self.quan_ly_nguoi_dung = QuanLyNguoiDung()  # đọc danh sách người dùng từ users.json
+        self.nguoi_dung_dang_nhap = None         # người dùng đăng nhập thành công
+
+        # nạp style chung (chữ đen, không đổi theo Dark mode)
+        self.__nap_giao_dien_chung()
 
         # load file ui
-        ui_path = self.root_dir + "/ui/login.ui"
-        uic.loadUi(ui_path, self)
+        duong_dan_ui = os.path.join(self.thu_muc_goc, "ui", "login.ui")
+        uic.loadUi(duong_dan_ui, self)
 
-        # bat su kien cho cac nut bam
-        # 1. nut login
-        self.login.clicked.connect(
-            self.handle_login
-        )  # click vao nut login -> goi ham handle_login
-        # 2. nut chuyen register
-        self.nav_signup.clicked.connect(
-            self.goto_signup
-        )  # click vao nut chuyen signup -> goi ham goto_registergoto_signup
+        # bắt sự kiện cho các nút bấm
+        self.nut_dang_nhap.clicked.connect(self.xu_ly_dang_nhap)          # nút Login
+        self.nut_chuyen_dang_ky.clicked.connect(self.chuyen_trang_dang_ky)    # nút sang Sign up
 
-
-        # chay app
         self.show()
 
-    # ------------------ xu ly su kien ------------------
-    def handle_login(self):
-        # lay du lieu tu input form
-        email_input = (
-            self.email.text().strip()
-        )  # lay du lieu tu username input, xoa khoang trang 2 dau
-        password_input = self.password.text()
+    # ------------------ xử lý sự kiện ------------------
+    def xu_ly_dang_nhap(self):
+        # lấy dữ liệu người dùng nhập, strip() xóa khoảng trắng 2 đầu
+        email_nhap = self.o_email.text().strip()
+        mat_khau_nhap = self.o_mat_khau.text()
 
-        # validate du lieu
-        if self.__validate_input(email_input, password_input) is not None:
-            print(self.__validate_input(email_input, password_input))
-            # co loi -> bao loi
-            self.__show_message(self.__validate_input(email_input, password_input))
-            return  # khong lam gi nua
-        else:
-            # thanh cong -> chuyen sang home
-            self.__goto_home()
+        # kiểm tra dữ liệu, có lỗi -> báo lỗi rồi dừng
+        loi = self.__kiem_tra_du_lieu(email_nhap, mat_khau_nhap)
+        if loi is not None:
+            self.hien_thong_bao(loi)
+            return
 
-    def goto_signup(self):
-        from pages.signup import SignupPage
+        # tìm tài khoản theo email trong file json
+        nguoi_dung = self.quan_ly_nguoi_dung.tim_nguoi_dung(email_nhap)
+        if nguoi_dung is None or nguoi_dung.lay_mat_khau() != mat_khau_nhap:
+            self.hien_thong_bao("Email hoặc mật khẩu không đúng!")
+            return
 
-        self.signup_page = SignupPage(
-            main_window=self.main_window, root_dir=self.root_dir
+        # đúng hết -> sang trang chủ
+        self.nguoi_dung_dang_nhap = nguoi_dung
+        self.__chuyen_trang_chu()
+
+    def chuyen_trang_dang_ky(self):
+        from pages.signup import TrangDangKy
+
+        self.trang_dang_ky = TrangDangKy(cua_so_chinh=self.cua_so_chinh, thu_muc_goc=self.thu_muc_goc)
+        self.close()
+
+    # ------------------ hàm hỗ trợ ------------------
+    def __chuyen_trang_chu(self):
+        from pages.home import TrangChu
+
+        self.trang_chu = TrangChu(
+            cua_so_chinh=self.cua_so_chinh, thu_muc_goc=self.thu_muc_goc, tai_khoan=self.nguoi_dung_dang_nhap
         )
-        self.close()  # ✅ đóng cửa sổ
-    def __goto_home(self):
-        from pages.home import HomePage
+        self.close()
 
-        self.home_page = HomePage(main_window=self.main_window, root_dir=self.root_dir, cur_acc=account)
-        self.close()  # ✅ đóng cửa sổ
+    def __nap_giao_dien_chung(self):
+        # Đọc file assets/style.qss rồi gắn cho CẢ app (QApplication)
+        # -> chỉ cần làm 1 lần ở trang đầu tiên, mọi trang sau đều dùng được
+        duong_dan_qss = os.path.join(self.thu_muc_goc, "assets", "style.qss")
+        with open(duong_dan_qss, "r", encoding="utf-8") as tep:
+            QApplication.instance().setStyleSheet(tep.read())
 
-    def __validate_input(self, email, password):
-        # kiem tra email
-        regex = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-        if re.fullmatch(regex, email) is None:
-            return "Email khong hop le!"
+    def __kiem_tra_du_lieu(self, email, mat_khau):
+        # kiểm tra email đúng dạng abc@gmail.com
+        mau_email = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        if re.fullmatch(mau_email, email) is None:
+            return "Email không hợp lệ!"
 
-        # kiem tra password
-        if len(password) < 6:
-            return "Password phai tu 6 chu so tro len!"
+        # kiểm tra độ dài mật khẩu
+        if len(mat_khau) < 6:
+            return "Mật khẩu phải từ 6 ký tự trở lên!"
 
-        # kiem tra khop tai khoan (mock data)
-        if email != account["email"] or password != account["password"]:
-            return "Email hoac password khong chinh xac!"
+        return None  # không có lỗi
 
-        return None  # khong co loi
-    
-    # ------------------ ham ho tro ------------------
-    def __show_message(self, message):
-        # Khởi tạo hộp thoại thông báo
-        msg = QMessageBox()
-        msg.setWindowTitle("Thông báo")
-        msg.setText(message)
-        msg.setIcon(
-            QMessageBox.Icon.Information
-        )  # Các icon mặc định: Information, Warning, Critical, Question
-        msg.setStandardButtons(QMessageBox.StandardButton.Ok)  # Nút bấm OK
-        # Hiển thị hộp thoại
-        msg.exec()
+    def hien_thong_bao(self, noi_dung):
+        # hộp thoại thông báo có nút OK
+        hop_thoai = QMessageBox()
+        hop_thoai.setWindowTitle("Thông báo")
+        hop_thoai.setText(noi_dung)
+        hop_thoai.setIcon(QMessageBox.Icon.Information)
+        hop_thoai.setStandardButtons(QMessageBox.StandardButton.Ok)
+        hop_thoai.exec()

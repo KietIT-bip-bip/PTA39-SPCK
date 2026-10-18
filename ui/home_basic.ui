@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(227, 242, 253);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(227, 242, 253);</string>
+   </property>
+   <layout class="QVBoxLayout" name="bo_cuc_doc">
+    <item>
+     <widget class="QWidget" name="khung_chinh" native="true">
+      <property name="font">
+       <font>
+        <family>Century</family>
+        <stylestrategy>PreferDefault</stylestrategy>
+       </font>
+      </property>
+      <layout class="QVBoxLayout" name="bo_cuc_doc_7">
+       <item>
+        <widget class="QWidget" name="thanh_thong_tin" native="true">
+         <property name="styleSheet">
+          <string notr="true">#thanh_thong_tin {
+    background-color: #E3F2FD; 
+    border: 2px solid E3F2FD; 
+    border-radius: 4px;    
+}   </string>
+         </property>
+         <layout class="QHBoxLayout" name="bo_cuc_ngang">
+          <item>
+           <widget class="QWidget" name="khung_thong_tin" native="true">
+            <property name="styleSheet">
+             <string notr="true">#widget_5 {
+	color: #000000;
+    border: 2px solid #1B5E20;
+    border-radius: 12px;
+    background-color: rgba(165, 214, 167, 150);
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="bo_cuc_doc_2">
+             <item>
+              <widget class="QLabel" name="ten_nguoi_dung">
+               <property name="font">
+                <font>
+                 <family>Century</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Username:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="hoc_luc_tong">
+               <property name="font">
+                <font>
+                 <family>Century</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>Học Lực:</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="vung_cuon">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>410</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>410</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+    border: 2px solid #0D47A1;
+    border-radius: 12px;
+   background-color: rgba(144, 202, 249, 150);;;
+</string>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="noi_dung_cuon">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>952</width>
+            <height>406</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="bo_cuc_doc_3">
+           <item>
+            <widget class="QWidget" name="tieu_de_hk1" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(0, 96, 96);
+background-color: rgb(227, 242, 253);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <layout class="QHBoxLayout" name="bo_cuc_ngang_29">
+              <item>
+               <widget class="QLabel" name="nhan_hk1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>HK1</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_33">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_34">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_35">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_36">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_37">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="hoc_luc_hk1">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>Học lực</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="o_tb_hk1">
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>TB HKI</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="nut_tinh_hk1">
+                <property name="minimumSize">
+                 <size>
+                  <width>95</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>-1</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#nut_tinh_hk1 {
+    background-color: #0D47A1; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_tinh_hk1:hover {
+    background-color: #90CAF9;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Tính điểm TB</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="ds_mon_hk1" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(227, 242, 253, 150);</string>
+             </property>
+             <layout class="QVBoxLayout" name="bo_cuc_doc_13"/>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="tieu_de_hk2" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(0, 96, 96);
+background-color: rgb(227, 242, 253);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <layout class="QHBoxLayout" name="bo_cuc_ngang_42">
+              <item>
+               <widget class="QLabel" name="nhan_hk2">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>HKII</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_52">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_53">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_54">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_55">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_56">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="hoc_luc_hk2">
+                <property name="styleSheet">
+                 <string notr="true">border: 2px solid #4A6FA5;
+color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>Học lực</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="o_tb_hk2">
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>TB HKII</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="nut_tinh_hk2">
+                <property name="minimumSize">
+                 <size>
+                  <width>95</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>-1</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#nut_tinh_hk2 {
+    background-color: #0D47A1; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_tinh_hk2:hover {
+    background-color: #90CAF9;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Tính điểm TB</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="ds_mon_hk2" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(227, 242, 253, 150);</string>
+             </property>
+             <layout class="QVBoxLayout" name="bo_cuc_doc_15"/>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="tieu_de_ca_nam" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(0, 96, 96);
+background-color: rgb(227, 242, 253);
+color: rgb(255, 255, 255);</string>
+             </property>
+             <layout class="QHBoxLayout" name="bo_cuc_ngang_55">
+              <item>
+               <widget class="QLabel" name="nhan_ca_nam">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>Cả năm</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_70">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_71">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_72">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_73">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="khoang_trong_ngang_74">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="hoc_luc_ca_nam">
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(0, 0, 0);</string>
+                </property>
+                <property name="text">
+                 <string>Hoc luc</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="ds_mon_ca_nam" native="true">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(227, 242, 253, 150);</string>
+             </property>
+             <layout class="QVBoxLayout" name="bo_cuc_doc_17"/>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="thanh_cong_cu" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#thanh_cong_cu {
+    border: 2px solid #0D47A1;
+    border-radius: 12px;
+   background-color: rgba(144, 202, 249, 150);;;
+}</string>
+      </property>
+      <layout class="QHBoxLayout" name="bo_cuc_ngang_28">
+       <item>
+        <widget class="QPushButton" name="nut_hk1">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_hk1 {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_hk1:hover {
+    background-color: #90CAF9;
+}</string>
+         </property>
+         <property name="text">
+          <string>HK1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="khoang_trong_ngang_49">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nut_hk2">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_hk2 {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_hk2:hover {
+    background-color: #90CAF9;
+}</string>
+         </property>
+         <property name="text">
+          <string>HK2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="khoang_trong_ngang_50">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nut_ca_nam">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_ca_nam {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_ca_nam:hover {
+    background-color: #90CAF9;
+}</string>
+         </property>
+         <property name="text">
+          <string>Cả năm</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="khoang_trong_ngang_51">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nut_cai_dat">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_cai_dat {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_cai_dat:hover {
+    background-color: #90CAF9;
+}</string>
+         </property>
+         <property name="text">
+          <string>Cài đặt</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="khoang_trong_ngang_99">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nut_xuat_bang_diem">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_xuat_bang_diem {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_xuat_bang_diem:hover {
+    background-color: #90CAF9;
+}</string>
+         </property>
+         <property name="text">
+          <string>Xuất bảng điểm</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

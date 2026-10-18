@@ -1,0 +1,51 @@
+/* ==========================================================
+   style.qss - Giao diện CHUNG cho toàn bộ app
+   ----------------------------------------------------------
+   Mục đích: chữ luôn màu đen, nền luôn sáng,
+   KHÔNG bị đổi theo chế độ tối (Dark mode) của Windows.
+   Style riêng trong file .ui (vd: color: red) vẫn được ưu tiên.
+   ========================================================== */
+
+/* 1. Mọi thành phần: chữ màu đen */
+* {
+    color: black;
+}
+
+/* 2. Nền cửa sổ màu sáng */
+QMainWindow, QDialog, QMessageBox {
+    background: #E3F2FD;
+}
+
+/* 3. Ô nhập chữ và danh sách: nền trắng */
+QLineEdit, QTextEdit, QListWidget {
+    background: white;
+    border: 1px solid #90CAF9;
+    border-radius: 5px;
+}
+
+/* 4. Vùng cuộn: nền sáng thay vì xám/đen */
+QScrollArea {
+    background: #F5F5F5;
+    border: none;
+}
+QScrollArea > QWidget > QWidget {
+    background: #F5F5F5;
+}
+
+/* 5. Nút trong hộp thông báo (QMessageBox) */
+QMessageBox QPushButton {
+    background: #90CAF9;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    min-width: 60px;
+}
+QMessageBox QPushButton:hover {
+    background: #2196F3;
+}
+
+/* 6. Chú thích khi rê chuột (tooltip) */
+QToolTip {
+    background: white;
+    border: 1px solid #90CAF9;
+}

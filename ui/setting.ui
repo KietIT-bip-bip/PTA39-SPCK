@@ -26,144 +26,45 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(16, 16, 48);</string>
+   <string notr="true">background-color: rgb(16, 16, 48);
+background-color: rgb(227, 242, 253);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QWidget" name="thanhcongcu" native="true">
+     <widget class="QWidget" name="khung_chinh" native="true">
       <property name="styleSheet">
-       <string notr="true">#thanhcongcu {
-    background-color: #1A1A40; 
-    border: 2px solid #4A6FA5; 
-    border-radius: 4px;    
-}   </string>
+       <string notr="true">#khung_chinh {
+    border: 2px solid #0D47A1;
+    border-radius: 12px;
+   background-color: rgba(144, 202, 249, 150);;;
+}</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="bo_cuc_doc_5">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QWidget" name="thanh_thong_tin" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color: #1A1A40; 
-color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="text">
-          <string>TechOption</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="Line" name="line">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="nut_home">
-         <property name="styleSheet">
-          <string notr="true">#nut_home {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
-    border-radius: 4px;
-    
-    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
-    font-size: 12px;
-    font-weight: bold;
-}
-#nut_home:hover {
-    background-color: #3b5c8a;
+          <string notr="true">#thanh_thong_tin {
+    border: 2px solid #0D47A1;
+    border-radius: 12px;
+  background-color: rgba(227, 242, 253, 150);;;;
 }</string>
          </property>
-         <property name="text">
-          <string>HOME</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>386</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="nut_caidat">
-         <property name="minimumSize">
-          <size>
-           <width>93</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>93</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#nut_caidat {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
-    border-radius: 4px;
-    
-    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
-    font-size: 12px;
-    font-weight: bold;
-}
-#nut_caidat:hover {
-    background-color: #3b5c8a;
-}</string>
-         </property>
-         <property name="text">
-          <string>Cài đặt</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="widget_2" native="true">
-      <property name="styleSheet">
-       <string notr="true">#widget_2 {
-    background-color: #1A1A40; 
-    border: 2px solid #4A6FA5; 
-    border-radius: 4px;    
-}   </string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QWidget" name="widget_3" native="true">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(26, 26, 64);</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <layout class="QVBoxLayout" name="bo_cuc_doc_3">
           <item>
-           <widget class="QWidget" name="widget_4" native="true">
+           <widget class="QWidget" name="khung_thong_tin" native="true">
             <property name="styleSheet">
-             <string notr="true">#widget_4 {
-    background-color: #555565; 
-    border: 2px solid #4A6FA5; 
+             <string notr="true">#khung_thong_tin {
+    background-color: #E3F2FD; 
+    border: 2px solid E3F2FD; 
     border-radius: 4px;    
 }   </string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <layout class="QVBoxLayout" name="bo_cuc_doc_2">
              <item>
-              <widget class="QLabel" name="username">
+              <widget class="QLabel" name="ho_ten">
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(85, 85, 101);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>Name:</string>
@@ -171,7 +72,7 @@ background-color: rgb(85, 85, 101);</string>
               </widget>
              </item>
              <item>
-              <widget class="Line" name="line_2">
+              <widget class="Line" name="duong_ke_2">
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(168, 168, 168);</string>
                </property>
@@ -183,8 +84,7 @@ background-color: rgb(85, 85, 101);</string>
              <item>
               <widget class="QLabel" name="email">
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(85, 85, 101);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>Email:</string>
@@ -192,7 +92,7 @@ background-color: rgb(85, 85, 101);</string>
               </widget>
              </item>
              <item>
-              <widget class="Line" name="line_3">
+              <widget class="Line" name="duong_ke_3">
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(168, 168, 168);</string>
                </property>
@@ -204,8 +104,7 @@ background-color: rgb(85, 85, 101);</string>
              <item>
               <widget class="QLabel" name="sdt">
                <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(85, 85, 101);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>SDT:</string>
@@ -216,7 +115,7 @@ background-color: rgb(85, 85, 101);</string>
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_3">
+           <spacer name="khoang_trong_ngang_3">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -232,17 +131,17 @@ background-color: rgb(85, 85, 101);</string>
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_5" native="true">
+        <widget class="QWidget" name="khung_chuc_nang" native="true">
          <property name="styleSheet">
-          <string notr="true">#widget_5 {
-    background-color: #1A1A40; 
-    border: 2px solid #4A6FA5; 
-    border-radius: 4px;    
-}   </string>
+          <string notr="true">#khung_chuc_nang {
+    border: 2px solid #0D47A1;
+    border-radius: 12px;
+   background-color: rgba(227, 242, 253, 150);;;;
+}</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
+         <layout class="QHBoxLayout" name="bo_cuc_ngang">
           <item>
-           <widget class="QWidget" name="widget_6" native="true">
+           <widget class="QWidget" name="khung_nut" native="true">
             <property name="minimumSize">
              <size>
               <width>150</width>
@@ -256,28 +155,28 @@ background-color: rgb(85, 85, 101);</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">#widget_6 {
-    background-color: #1A1A40; 
-    border: 2px solid #4A6FA5; 
-    border-radius: 4px;    
-}   </string>
+             <string notr="true">#khung_nut {
+    border: 2px solid #0D47A1;
+    border-radius: 12px;
+  background-color: rgba(227, 242, 253, 150);;
+}</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_4">
+            <layout class="QVBoxLayout" name="bo_cuc_doc_4">
              <item>
-              <widget class="QPushButton" name="nut_thaydoiten">
+              <widget class="QPushButton" name="nut_doi_ten">
                <property name="styleSheet">
-                <string notr="true">#nut_thaydoiten {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
+                <string notr="true">#nut_doi_ten {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
     border-radius: 4px;
     
     min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
     font-size: 12px;
     font-weight: bold;
 }
-#nut_thaydoiten:hover {
-    background-color: #3b5c8a;
+#nut_doi_ten:hover {
+    background-color: #90CAF9;
 }</string>
                </property>
                <property name="text">
@@ -286,7 +185,7 @@ background-color: rgb(85, 85, 101);</string>
               </widget>
              </item>
              <item>
-              <spacer name="verticalSpacer_3">
+              <spacer name="khoang_trong_doc_3">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -299,20 +198,20 @@ background-color: rgb(85, 85, 101);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="nut_thaydoimatkhau">
+              <widget class="QPushButton" name="nut_doi_mat_khau">
                <property name="styleSheet">
-                <string notr="true">#nut_thaydoimatkhau {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
+                <string notr="true">#nut_doi_mat_khau {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
     border-radius: 4px;
     
     min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
     font-size: 12px;
     font-weight: bold;
 }
-#nut_thaydoimatkhau:hover {
-    background-color: #3b5c8a;
+#nut_doi_mat_khau:hover {
+    background-color: #90CAF9;
 }</string>
                </property>
                <property name="text">
@@ -321,7 +220,7 @@ background-color: rgb(85, 85, 101);</string>
               </widget>
              </item>
              <item>
-              <spacer name="verticalSpacer_4">
+              <spacer name="khoang_trong_doc_4">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -334,20 +233,20 @@ background-color: rgb(85, 85, 101);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="nut_thaydoisdt">
+              <widget class="QPushButton" name="nut_doi_sdt">
                <property name="styleSheet">
-                <string notr="true">#nut_thaydoisdt {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
+                <string notr="true">#nut_doi_sdt {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
     border-radius: 4px;
     
     min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
     font-size: 12px;
     font-weight: bold;
 }
-#nut_thaydoisdt:hover {
-    background-color: #3b5c8a;
+#nut_doi_sdt:hover {
+    background-color: #90CAF9;
 }</string>
                </property>
                <property name="text">
@@ -356,7 +255,7 @@ background-color: rgb(85, 85, 101);</string>
               </widget>
              </item>
              <item>
-              <spacer name="verticalSpacer_5">
+              <spacer name="khoang_trong_doc_5">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -369,20 +268,20 @@ background-color: rgb(85, 85, 101);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="nut_huongdansudung">
+              <widget class="QPushButton" name="nut_huong_dan">
                <property name="styleSheet">
-                <string notr="true">#nut_huongdansudung {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
+                <string notr="true">#nut_huong_dan {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
     border-radius: 4px;
     
     min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
     font-size: 12px;
     font-weight: bold;
 }
-#nut_huongdansudung:hover {
-    background-color: #3b5c8a;
+#nut_huong_dan:hover {
+    background-color: #90CAF9;
 }</string>
                </property>
                <property name="text">
@@ -391,7 +290,7 @@ background-color: rgb(85, 85, 101);</string>
               </widget>
              </item>
              <item>
-              <spacer name="verticalSpacer_6">
+              <spacer name="khoang_trong_doc_6">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -404,20 +303,20 @@ background-color: rgb(85, 85, 101);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="nut_danhgia">
+              <widget class="QPushButton" name="nut_danh_gia">
                <property name="styleSheet">
-                <string notr="true">#nut_danhgia {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
+                <string notr="true">#nut_danh_gia {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
     border-radius: 4px;
     
     min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
     font-size: 12px;
     font-weight: bold;
 }
-#nut_danhgia:hover {
-    background-color: #3b5c8a;
+#nut_danh_gia:hover {
+    background-color: #90CAF9;
 }</string>
                </property>
                <property name="text">
@@ -426,7 +325,7 @@ background-color: rgb(85, 85, 101);</string>
               </widget>
              </item>
              <item>
-              <spacer name="verticalSpacer_7">
+              <spacer name="khoang_trong_doc_7">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
                </property>
@@ -439,20 +338,20 @@ background-color: rgb(85, 85, 101);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="nut_dangxuat">
+              <widget class="QPushButton" name="nut_dang_xuat">
                <property name="styleSheet">
-                <string notr="true">#nut_dangxuat {
-    background-color: #4A6FA5; 
-    color: white;              
-    border: 1px solid #ffffff; 
+                <string notr="true">#nut_dang_xuat {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
     border-radius: 4px;
     
     min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
     font-size: 12px;
     font-weight: bold;
 }
-#nut_dangxuat:hover {
-    background-color: #3b5c8a;
+#nut_dang_xuat:hover {
+    background-color: #90CAF9;
 }</string>
                </property>
                <property name="text">
@@ -464,18 +363,35 @@ background-color: rgb(85, 85, 101);</string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_7">
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
+           <widget class="QTextBrowser" name="textBrowser">
+            <property name="font">
+             <font>
+              <family>Century</family>
+             </font>
             </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap>../assets/images/logo-removebg-preview.png</pixmap>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Century'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:600;&quot;&gt;APP QUẢN LÝ ĐIỂM HỌC TẬP – TỰ THEO DÕI, TỰ BỨC PHÁ!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;Ứng dụng giúp bạn chủ động quản lý toàn bộ kết quả học tập của bản thân chỉ với vài thao tác đơn giản. Không phụ thuộc vào giáo viên, bạn hoàn toàn kiểm soát và theo dõi tiến trình học tập của mình mọi lúc, mọi nơi.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:600;&quot;&gt;1. Tính năng nổi bật&lt;/span&gt;&lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Chủ động nhập điểm:&lt;/span&gt; Tự do nhập điểm số các môn học (miệng, 15 phút, giữa kỳ, cuối kỳ) ngay khi nhận kết quả.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Tự động tính điểm trung bình:&lt;/span&gt; Hệ thống tự tính toán chính xác điểm trung bình môn, điểm trung bình học kỳ và cả năm theo chuẩn quy định.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Dự đoán &amp;amp; Đặt mục tiêu:&lt;/span&gt; Cho phép nhập trước điểm số dự kiến để biết cần đạt bao nhiêu điểm trong bài thi sắp tới nhằm đạt học lực mong muốn.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Biểu đồ theo dõi tiến độ:&lt;/span&gt; Trực quan hóa kết quả học tập qua từng tuần/tháng, giúp bạn nhanh chóng nhận ra môn học nào cần cải thiện.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bảo mật &amp;amp; Riêng tư:&lt;/span&gt; Toàn bộ thông tin điểm số lưu trên máy cá nhân, đảm bảo riêng tư tuyệt đối.&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:600;&quot;&gt;2. Vì sao bạn nên sử dụng?&lt;/span&gt;&lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Hoàn toàn độc lập:&lt;/span&gt; Tự do theo dõi điểm số mà không cần chờ đợi giáo viên hay nhà trường cập nhật.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Tiết kiệm thời gian:&lt;/span&gt; Không cần tính nhẩm hay ghi chép thủ công ra sổ sách.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Giao diện thân thiện:&lt;/span&gt; Dễ sử dụng, thao tác nhanh gọn, thiết kế phù hợp cho học sinh.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Lên kế hoạch hiệu quả:&lt;/span&gt; Biết rõ thế mạnh và điểm yếu từng môn để phân bổ thời gian ôn tập hợp lý.&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:600;&quot;&gt;3. Hướng dẫn sử dụng nhanh&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bước 1:&lt;/span&gt; Tải và mở ứng dụng.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bước 2:&lt;/span&gt; Tạo danh sách môn học và thiết lập hệ số điểm.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bước 3:&lt;/span&gt; Nhập điểm số mỗi khi có bài kiểm tra.&lt;/li&gt;
+&lt;li style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Bước 4:&lt;/span&gt; Xem kết quả phân tích và theo dõi tiến độ học tập.&lt;/li&gt;&lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -483,13 +399,107 @@ background-color: rgb(85, 85, 101);</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="phien_ban">
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(85, 85, 101);</string>
+          <string notr="true">background-color: rgb(13, 71, 161);
+color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
           <string>Phiên bản hiện tại: Beta</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="thanh_cong_cu" native="true">
+      <property name="styleSheet">
+       <string notr="true">#thanh_cong_cu {
+    border: 2px solid #0D47A1;
+    border-radius: 12px;
+   background-color: rgba(144, 202, 249, 150);;;
+}</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="nut_trang_chu">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_trang_chu {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_trang_chu:hover {
+    background-color: #90CAF9;
+}</string>
+         </property>
+         <property name="text">
+          <string>HOME</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nut_cai_dat">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#nut_cai_dat {
+    background-color: #2196F3; 
+    color: #ffffff;              
+    border: 1px solid #0D47A1; 
+    border-radius: 4px;
+    
+    min-height: 30px;     /* Bằng chiều cao nút trên cho đều */
+    font-size: 12px;
+    font-weight: bold;
+}
+#nut_cai_dat:hover {
+    background-color: #90CAF9;
+}</string>
+         </property>
+         <property name="text">
+          <string>Cài đặt</string>
          </property>
         </widget>
        </item>
